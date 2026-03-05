@@ -40,6 +40,7 @@
             this.markAsSoldBtn = new System.Windows.Forms.Button();
             this.txtStock = new System.Windows.Forms.TextBox();
             this.stockLbl = new System.Windows.Forms.Label();
+            this.cbSaleItems = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -59,7 +60,7 @@
             // goToTrackSales
             // 
             this.goToTrackSales.Name = "goToTrackSales";
-            this.goToTrackSales.Size = new System.Drawing.Size(76, 20);
+            this.goToTrackSales.Size = new System.Drawing.Size(75, 20);
             this.goToTrackSales.Text = "Track Sales";
             this.goToTrackSales.Click += new System.EventHandler(this.goToTrackSales_Click);
             // 
@@ -68,7 +69,7 @@
             this.exitSys.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.exitSys.BackColor = System.Drawing.Color.Red;
             this.exitSys.Name = "exitSys";
-            this.exitSys.Size = new System.Drawing.Size(37, 20);
+            this.exitSys.Size = new System.Drawing.Size(38, 20);
             this.exitSys.Text = "Exit";
             this.exitSys.Click += new System.EventHandler(this.exitSys_Click);
             // 
@@ -94,9 +95,9 @@
             // listBoxSaleItems
             // 
             this.listBoxSaleItems.FormattingEnabled = true;
-            this.listBoxSaleItems.Location = new System.Drawing.Point(269, 60);
+            this.listBoxSaleItems.Location = new System.Drawing.Point(50, 248);
             this.listBoxSaleItems.Name = "listBoxSaleItems";
-            this.listBoxSaleItems.Size = new System.Drawing.Size(297, 212);
+            this.listBoxSaleItems.Size = new System.Drawing.Size(175, 69);
             this.listBoxSaleItems.TabIndex = 2;
             // 
             // currentStockLbl
@@ -145,11 +146,21 @@
             this.stockLbl.TabIndex = 7;
             this.stockLbl.Text = "Stock Amount for selected item";
             // 
+            // cbSaleItems
+            // 
+            this.cbSaleItems.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cbSaleItems.FormattingEnabled = true;
+            this.cbSaleItems.Location = new System.Drawing.Point(231, 60);
+            this.cbSaleItems.Name = "cbSaleItems";
+            this.cbSaleItems.Size = new System.Drawing.Size(375, 329);
+            this.cbSaleItems.TabIndex = 8;
+            // 
             // frmSeeSaleItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cbSaleItems);
             this.Controls.Add(this.stockLbl);
             this.Controls.Add(this.txtStock);
             this.Controls.Add(this.markAsSoldBtn);
@@ -184,5 +195,6 @@
         private System.Windows.Forms.Button markAsSoldBtn;
         private System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.Label stockLbl;
+        private System.Windows.Forms.ComboBox cbSaleItems;
     }
 }
