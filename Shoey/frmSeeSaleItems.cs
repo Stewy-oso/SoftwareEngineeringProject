@@ -14,6 +14,8 @@ namespace Shoey
     public partial class frmSeeSaleItems : Form
     {
 
+        Database db = new Database();
+
         public static List<SaleItem> SaleItems = new List<SaleItem>();
         public frmSeeSaleItems()
         {
@@ -61,6 +63,14 @@ namespace Shoey
 
         private void frmSeeSaleItems_Load(object sender, EventArgs e)
         {
+            loadStockItems();
+
+            //DataTable dt = db.getSaleItems();
+
+            //cbSaleItems.DataSource = dt;
+            //cbSaleItems.DisplayMember = "NAME";
+            //cbSaleItems.ValueMember = "PRODUCTID";
+            /*
             foreach (var p in frmSeePrevPurchase.PreviousPurchases)
             {
                 if (!SaleItems.Any(s => s.Name == p.Name))
@@ -73,18 +83,21 @@ namespace Shoey
                     });
                 }
             }
+            */
 
-            RefreshSaleItemsList();
+            //RefreshSaleItemsList();
         }
 
         private void RefreshSaleItemsList()
         {
+            /*
             listBoxSaleItems.DataSource = null;
             listBoxSaleItems.DataSource = SaleItems;
+            */
         }
 
         private void btnUpdateStock_Click(object sender, EventArgs e)
-        {
+        { /*
             if (listBoxSaleItems.SelectedItem is SaleItem item)
             {
                 int newStock;
@@ -98,10 +111,11 @@ namespace Shoey
                     MessageBox.Show("Enter a valid number for stock.");
                 }
             }
+            */
         }
 
         private void markAsSoldBtn_Click(object sender, EventArgs e)
-        {
+        { /*
             if (listBoxSaleItems.SelectedItem is SaleItem item)
             {
                 if (item.Stock > 0)
@@ -115,6 +129,29 @@ namespace Shoey
                     MessageBox.Show("Cannot sell, out of stock.");
                 }
             }
+            */
+        }
+
+        private void loadStockItems()
+        {
+            Database db = new Database();
+            DataTable dt = db.getSaleItems();
+
+            dgvSaleItems.AutoGenerateColumns = true;
+            dgvSaleItems.DataSource = dt;
+
+            dgvSaleItems.Columns["NAME"].HeaderText = "Name";
+            dgvSaleItems.Columns["QTY"].HeaderText = "Quantity";
+            dgvSaleItems.Columns["PRICE"].HeaderText = "Price";
+            
+            //Hide columns
+            dgvSaleItems.Columns["PRODUCTID"].Visible = false;
+            dgvSaleItems.Columns["COLOUR"].Visible = false;
+            dgvSaleItems.Columns["MANUFACTURER"].Visible = false;
+
+            //Force sizing all columns & cells
+            //dgvSaleItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //dgvSaleItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
     }
 }

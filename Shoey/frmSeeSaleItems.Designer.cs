@@ -29,20 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSeeSaleItems));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.goToTrackSales = new System.Windows.Forms.ToolStripMenuItem();
             this.exitSys = new System.Windows.Forms.ToolStripMenuItem();
             this.backToMnu = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.listBoxSaleItems = new System.Windows.Forms.ListBox();
             this.currentStockLbl = new System.Windows.Forms.Label();
             this.btnUpdateStock = new System.Windows.Forms.Button();
             this.markAsSoldBtn = new System.Windows.Forms.Button();
             this.txtStock = new System.Windows.Forms.TextBox();
             this.stockLbl = new System.Windows.Forms.Label();
-            this.cbSaleItems = new System.Windows.Forms.ComboBox();
+            this.dgvSaleItems = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSaleItems)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -92,14 +94,6 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // listBoxSaleItems
-            // 
-            this.listBoxSaleItems.FormattingEnabled = true;
-            this.listBoxSaleItems.Location = new System.Drawing.Point(50, 248);
-            this.listBoxSaleItems.Name = "listBoxSaleItems";
-            this.listBoxSaleItems.Size = new System.Drawing.Size(175, 69);
-            this.listBoxSaleItems.TabIndex = 2;
-            // 
             // currentStockLbl
             // 
             this.currentStockLbl.AutoSize = true;
@@ -146,27 +140,41 @@
             this.stockLbl.TabIndex = 7;
             this.stockLbl.Text = "Stock Amount for selected item";
             // 
-            // cbSaleItems
+            // dgvSaleItems
             // 
-            this.cbSaleItems.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
-            this.cbSaleItems.FormattingEnabled = true;
-            this.cbSaleItems.Location = new System.Drawing.Point(231, 60);
-            this.cbSaleItems.Name = "cbSaleItems";
-            this.cbSaleItems.Size = new System.Drawing.Size(375, 329);
-            this.cbSaleItems.TabIndex = 8;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSaleItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvSaleItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSaleItems.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvSaleItems.Location = new System.Drawing.Point(212, 60);
+            this.dgvSaleItems.Name = "dgvSaleItems";
+            this.dgvSaleItems.Size = new System.Drawing.Size(399, 283);
+            this.dgvSaleItems.TabIndex = 8;
             // 
             // frmSeeSaleItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.cbSaleItems);
+            this.Controls.Add(this.dgvSaleItems);
             this.Controls.Add(this.stockLbl);
             this.Controls.Add(this.txtStock);
             this.Controls.Add(this.markAsSoldBtn);
             this.Controls.Add(this.btnUpdateStock);
             this.Controls.Add(this.currentStockLbl);
-            this.Controls.Add(this.listBoxSaleItems);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -177,6 +185,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSaleItems)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,12 +198,11 @@
         private System.Windows.Forms.ToolStripMenuItem exitSys;
         private System.Windows.Forms.ToolStripMenuItem backToMnu;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ListBox listBoxSaleItems;
         private System.Windows.Forms.Label currentStockLbl;
         private System.Windows.Forms.Button btnUpdateStock;
         private System.Windows.Forms.Button markAsSoldBtn;
         private System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.Label stockLbl;
-        private System.Windows.Forms.ComboBox cbSaleItems;
+        private System.Windows.Forms.DataGridView dgvSaleItems;
     }
 }
