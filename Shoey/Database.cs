@@ -39,5 +39,31 @@ namespace Shoey
                 return dt;
             }
         }
+
+        public DataTable updateStockItems(int productID, decimal price, int qty, string description, string colour)
+        {
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = "UPDATE PRODUCTS " +
+                               "SET PRICE = PRICE + :price," +
+                                    "QTY = QTY + :qty, " +
+                                    "DESCRIPTION = DESCRIPTION + :desc, " +
+                                    "COLOUR = COLOUR + :colour " +
+                               "WHERE PRODUCTID = :id";
+
+                OracleCommand cmd = new OracleCommand(query, conn);
+
+                cmd.Parameters.Add(":price", price);
+                cmd.Parameters.Add(":qty", qty);
+                cmd.Parameters.Add(":desc", description);
+                cmd.Parameters.Add(":colour", colour);
+                cmd.Parameters.Add(":id", productID);
+
+                cmd.ExecuteNonQuery();
+
+            }
+        }
     }
 }

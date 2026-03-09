@@ -97,21 +97,19 @@ namespace Shoey
         }
 
         private void btnUpdateStock_Click(object sender, EventArgs e)
-        { /*
-            if (listBoxSaleItems.SelectedItem is SaleItem item)
-            {
-                int newStock;
-                if (int.TryParse(txtStock.Text, out newStock))
-                {
-                    item.Stock = newStock;
-                    RefreshSaleItemsList();
-                }
-                else
-                {
-                    MessageBox.Show("Enter a valid number for stock.");
-                }
+        { 
+            if(dgvSaleItems.SelectedRows.Count > 0) {
+                int productID = Convert.ToInt32(dgvSaleItems.SelectedRows[0].Cells["PRODUCTID"].Value);
+
+                frmUpdateStock frm = new frmUpdateStock(productID);
+                frm.ShowDialog();
+
+                loadStockItems();
             }
-            */
+            else
+            {
+                MessageBox.Show("Please select an item first.");
+            }
         }
 
         private void markAsSoldBtn_Click(object sender, EventArgs e)
