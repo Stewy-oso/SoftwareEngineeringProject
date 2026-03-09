@@ -26,6 +26,9 @@ namespace Shoey
 
         private void btnUpdateStock_Click(object sender, EventArgs e)
         {
+            // I want to add that a user will input a producID, then 
+            // a table will show all info about that product, where
+            // the user can alter the product info there
             int addStock;
 
             if(!int.TryParse(txtAddStock.Text, out addStock))
@@ -37,7 +40,7 @@ namespace Shoey
             {
                 Database db = new Database();
 
-                db.updateStockItems(
+                db.UpdateStockItems(
                         productID,
                         decimal.Parse(txtPrice.Text),
                         int.Parse(txtAddStock.Text),

@@ -40,18 +40,18 @@ namespace Shoey
             }
         }
 
-        public DataTable updateStockItems(int productID, decimal price, int qty, string description, string colour)
+        public void UpdateStockItems(int productID, decimal price, int qty, string description, string colour)
         {
             using (OracleConnection conn = new OracleConnection(connectionString))
             {
                 conn.Open();
 
-                string query = "UPDATE PRODUCTS " +
-                               "SET PRICE = PRICE + :price," +
-                                    "QTY = QTY + :qty, " +
-                                    "DESCRIPTION = DESCRIPTION + :desc, " +
-                                    "COLOUR = COLOUR + :colour " +
-                               "WHERE PRODUCTID = :id";
+                string query = @"UPDATE PRODUCTS 
+                               SET PRICE = PRICE + :price,
+                                    QTY = QTY + :qty, 
+                                    DESCRIPTION = DESCRIPTION + :desc, 
+                                    COLOUR = COLOUR + :colour 
+                               WHERE PRODUCTID = :id";
 
                 OracleCommand cmd = new OracleCommand(query, conn);
 
