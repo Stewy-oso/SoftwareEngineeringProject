@@ -42,7 +42,7 @@
             // lblAddStock
             // 
             this.lblAddStock.AutoSize = true;
-            this.lblAddStock.Location = new System.Drawing.Point(12, 40);
+            this.lblAddStock.Location = new System.Drawing.Point(300, 34);
             this.lblAddStock.Name = "lblAddStock";
             this.lblAddStock.Size = new System.Drawing.Size(57, 13);
             this.lblAddStock.TabIndex = 0;
@@ -50,7 +50,7 @@
             // 
             // txtAddStock
             // 
-            this.txtAddStock.Location = new System.Drawing.Point(118, 37);
+            this.txtAddStock.Location = new System.Drawing.Point(408, 31);
             this.txtAddStock.Name = "txtAddStock";
             this.txtAddStock.Size = new System.Drawing.Size(100, 20);
             this.txtAddStock.TabIndex = 1;
@@ -58,9 +58,9 @@
             // 
             // btnUpdateStock
             // 
-            this.btnUpdateStock.Location = new System.Drawing.Point(333, 366);
+            this.btnUpdateStock.Location = new System.Drawing.Point(303, 330);
             this.btnUpdateStock.Name = "btnUpdateStock";
-            this.btnUpdateStock.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdateStock.Size = new System.Drawing.Size(205, 54);
             this.btnUpdateStock.TabIndex = 2;
             this.btnUpdateStock.Text = "Update Stock";
             this.btnUpdateStock.UseVisualStyleBackColor = true;
@@ -68,7 +68,7 @@
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(118, 63);
+            this.txtPrice.Location = new System.Drawing.Point(408, 57);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(100, 20);
             this.txtPrice.TabIndex = 4;
@@ -76,7 +76,7 @@
             // lblChangePrice
             // 
             this.lblChangePrice.AutoSize = true;
-            this.lblChangePrice.Location = new System.Drawing.Point(12, 66);
+            this.lblChangePrice.Location = new System.Drawing.Point(300, 60);
             this.lblChangePrice.Name = "lblChangePrice";
             this.lblChangePrice.Size = new System.Drawing.Size(71, 13);
             this.lblChangePrice.TabIndex = 3;
@@ -84,7 +84,7 @@
             // 
             // txtColour
             // 
-            this.txtColour.Location = new System.Drawing.Point(118, 89);
+            this.txtColour.Location = new System.Drawing.Point(408, 83);
             this.txtColour.Name = "txtColour";
             this.txtColour.Size = new System.Drawing.Size(100, 20);
             this.txtColour.TabIndex = 6;
@@ -92,7 +92,7 @@
             // lblChangeColour
             // 
             this.lblChangeColour.AutoSize = true;
-            this.lblChangeColour.Location = new System.Drawing.Point(12, 92);
+            this.lblChangeColour.Location = new System.Drawing.Point(300, 86);
             this.lblChangeColour.Name = "lblChangeColour";
             this.lblChangeColour.Size = new System.Drawing.Size(75, 13);
             this.lblChangeColour.TabIndex = 5;
@@ -100,7 +100,7 @@
             // 
             // txtDesc
             // 
-            this.txtDesc.Location = new System.Drawing.Point(118, 115);
+            this.txtDesc.Location = new System.Drawing.Point(408, 109);
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(100, 20);
             this.txtDesc.TabIndex = 8;
@@ -108,7 +108,7 @@
             // lblChangeDesc
             // 
             this.lblChangeDesc.AutoSize = true;
-            this.lblChangeDesc.Location = new System.Drawing.Point(12, 118);
+            this.lblChangeDesc.Location = new System.Drawing.Point(300, 112);
             this.lblChangeDesc.Name = "lblChangeDesc";
             this.lblChangeDesc.Size = new System.Drawing.Size(100, 13);
             this.lblChangeDesc.TabIndex = 7;

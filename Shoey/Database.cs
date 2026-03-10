@@ -65,5 +65,22 @@ namespace Shoey
 
             }
         }
+
+        public DataTable FindSelectedInfo(/*int productID, decimal price, int qty, string description, string colour*/)
+        {
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = "SELECT * WHERE PRODUCTID = :id";
+
+                OracleDataAdapter da = new OracleDataAdapter(query, conn);
+
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                return dt;
+            }
+        }
     }
 }

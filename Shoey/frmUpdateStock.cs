@@ -33,12 +33,15 @@ namespace Shoey
 
             if(!int.TryParse(txtAddStock.Text, out addStock))
             {
-                MessageBox.Show("Enter a valid mumber.");
+                MessageBox.Show("Enter a valid number.");
                 return;
             }
+
             else
             {
+
                 Database db = new Database();
+                
 
                 db.UpdateStockItems(
                         productID,
