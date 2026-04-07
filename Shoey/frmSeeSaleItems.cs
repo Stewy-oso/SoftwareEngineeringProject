@@ -151,5 +151,43 @@ namespace Shoey
             //dgvSaleItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             //dgvSaleItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
+
+        private void btnDeletStock_Click(object sender, EventArgs e)
+        {
+            if (dgvSaleItems.SelectedRows.Count > 0)
+            {
+                int productID = Convert.ToInt32(dgvSaleItems.SelectedRows[0].Cells["PRODUCTID"].Value);
+                string productName = dgvSaleItems.SelectedRows[0].Cells["NAME"].Value.ToString();
+
+                DialogResult result = MessageBox.Show(
+                    "Are you sure you want to delete " + productName + " ?",
+                    "Confirm Deletion",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                    );
+            
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        Database db = new Database();
+                        db.DeleteProduct(productID);
+
+                        MessageBox.Show(productName + " deleted successfully!");
+
+                        loadStockItems();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Error deleting " + productName + ". Please try again.");
+                    }
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("Please select an item to delete first.");
+            }
+        }
     }
 }

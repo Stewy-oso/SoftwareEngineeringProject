@@ -85,5 +85,20 @@ namespace Shoey
                 return dt;
             }
         }
+
+        public void DeleteProduct(int productID)
+        {
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = "DELETE FROM PRODUCTS WHERE PRODUCTID = :id";
+
+                OracleCommand cmd = new OracleCommand(query, conn);
+                cmd.Parameters.Add(":id", productID);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
