@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSeeSaleItems));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.goToTrackSales = new System.Windows.Forms.ToolStripMenuItem();
             this.exitSys = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,7 +38,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.currentStockLbl = new System.Windows.Forms.Label();
             this.btnUpdateStock = new System.Windows.Forms.Button();
-            this.markAsSoldBtn = new System.Windows.Forms.Button();
             this.txtStock = new System.Windows.Forms.TextBox();
             this.stockLbl = new System.Windows.Forms.Label();
             this.dgvSaleItems = new System.Windows.Forms.DataGridView();
@@ -114,16 +113,6 @@
             this.btnUpdateStock.UseVisualStyleBackColor = true;
             this.btnUpdateStock.Click += new System.EventHandler(this.btnUpdateStock_Click);
             // 
-            // markAsSoldBtn
-            // 
-            this.markAsSoldBtn.Location = new System.Drawing.Point(40, 169);
-            this.markAsSoldBtn.Name = "markAsSoldBtn";
-            this.markAsSoldBtn.Size = new System.Drawing.Size(133, 59);
-            this.markAsSoldBtn.TabIndex = 5;
-            this.markAsSoldBtn.Text = "Mark As Sold";
-            this.markAsSoldBtn.UseVisualStyleBackColor = true;
-            this.markAsSoldBtn.Click += new System.EventHandler(this.markAsSoldBtn_Click);
-            // 
             // txtStock
             // 
             this.txtStock.Location = new System.Drawing.Point(628, 76);
@@ -143,23 +132,23 @@
             // 
             // dgvSaleItems
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSaleItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvSaleItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvSaleItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSaleItems.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvSaleItems.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvSaleItems.Location = new System.Drawing.Point(212, 60);
             this.dgvSaleItems.Name = "dgvSaleItems";
             this.dgvSaleItems.Size = new System.Drawing.Size(399, 283);
@@ -184,7 +173,6 @@
             this.Controls.Add(this.dgvSaleItems);
             this.Controls.Add(this.stockLbl);
             this.Controls.Add(this.txtStock);
-            this.Controls.Add(this.markAsSoldBtn);
             this.Controls.Add(this.btnUpdateStock);
             this.Controls.Add(this.currentStockLbl);
             this.Controls.Add(this.pictureBox1);
@@ -212,7 +200,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label currentStockLbl;
         private System.Windows.Forms.Button btnUpdateStock;
-        private System.Windows.Forms.Button markAsSoldBtn;
         private System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.Label stockLbl;
         private System.Windows.Forms.DataGridView dgvSaleItems;
