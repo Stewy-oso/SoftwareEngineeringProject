@@ -37,6 +37,7 @@
             this.lblChangeColour = new System.Windows.Forms.Label();
             this.txtDesc = new System.Windows.Forms.TextBox();
             this.lblChangeDesc = new System.Windows.Forms.Label();
+            this.lblNote1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblAddStock
@@ -114,11 +115,22 @@
             this.lblChangeDesc.TabIndex = 7;
             this.lblChangeDesc.Text = "Change Description";
             // 
+            // lblNote1
+            // 
+            this.lblNote1.AutoSize = true;
+            this.lblNote1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblNote1.Location = new System.Drawing.Point(57, 32);
+            this.lblNote1.Name = "lblNote1";
+            this.lblNote1.Size = new System.Drawing.Size(204, 15);
+            this.lblNote1.TabIndex = 9;
+            this.lblNote1.Text = "NOTE: This will add onto exising Quantity";
+            // 
             // frmUpdateStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblNote1);
             this.Controls.Add(this.txtDesc);
             this.Controls.Add(this.lblChangeDesc);
             this.Controls.Add(this.txtColour);
@@ -130,6 +142,7 @@
             this.Controls.Add(this.lblAddStock);
             this.Name = "frmUpdateStock";
             this.Text = "frmUpdateStock";
+            this.Load += new System.EventHandler(this.frmUpdateStock_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,5 +159,6 @@
         private System.Windows.Forms.Label lblChangeColour;
         private System.Windows.Forms.TextBox txtDesc;
         private System.Windows.Forms.Label lblChangeDesc;
+        private System.Windows.Forms.Label lblNote1;
     }
 }

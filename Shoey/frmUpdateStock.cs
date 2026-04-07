@@ -46,8 +46,8 @@ namespace Shoey
                 db.UpdateStockItems(
                         productID,
                         decimal.Parse(txtPrice.Text),
-                        int.Parse(txtAddStock.Text),
-                        txtDesc.Text,
+                        addStock,
+                        //txtDesc.Text,
                         txtColour.Text
                     );
 
@@ -57,6 +57,23 @@ namespace Shoey
             }
 
             
+        }
+
+        private void frmUpdateStock_Load(object sender, EventArgs e)
+        {
+            /* Temp data */
+            //int productID = 1;
+
+            Database db = new Database();
+            DataTable dt = db.FindSelectedInfo(productID);
+
+            if(dt.Rows.Count > 0)
+            {
+                txtPrice.Text = dt.Rows[0]["PRICE"].ToString();
+                txtAddStock.Text = dt.Rows[0]["QTY"].ToString();
+                //txtDesc.Text = dt.Rows[0]["DESC"].ToString();
+                txtColour.Text = dt.Rows[0]["COLOUR"].ToString();
+            }
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -40,24 +41,23 @@ namespace Shoey
             }
         }
 
-        public void UpdateStockItems(int productID, decimal price, int qty, string description, string colour)
+        public void UpdateStockItems(int productID, decimal price, int qty, string colour)
         {
             using (OracleConnection conn = new OracleConnection(connectionString))
             {
                 conn.Open();
 
                 string query = @"UPDATE PRODUCTS 
-                               SET PRICE = PRICE + :price,
+                               SET PRICE = :price,
                                     QTY = QTY + :qty, 
-                                    DESCRIPTION = DESCRIPTION + :desc, 
-                                    COLOUR = COLOUR + :colour 
+                                    COLOUR = :colour 
                                WHERE PRODUCTID = :id";
 
                 OracleCommand cmd = new OracleCommand(query, conn);
 
                 cmd.Parameters.Add(":price", price);
                 cmd.Parameters.Add(":qty", qty);
-                cmd.Parameters.Add(":desc", description);
+                //cmd.Parameters.Add(":desc", description); I removed description entirely, too many issues with it
                 cmd.Parameters.Add(":colour", colour);
                 cmd.Parameters.Add(":id", productID);
 
@@ -66,15 +66,18 @@ namespace Shoey
             }
         }
 
-        public DataTable FindSelectedInfo(/*int productID, decimal price, int qty, string description, string colour*/)
+        public DataTable FindSelectedInfo(int productID)
         {
             using (OracleConnection conn = new OracleConnection(connectionString))
             {
                 conn.Open();
 
-                string query = "SELECT * WHERE PRODUCTID = :id";
+                string query = "SELECT * FROM PRODUCTS WHERE PRODUCTID = :id";
 
-                OracleDataAdapter da = new OracleDataAdapter(query, conn);
+                OracleCommand cmd = new OracleCommand(query, conn);
+                cmd.Parameters.Add(":id", productID);
+                
+                OracleDataAdapter da = new OracleDataAdapter(cmd);
 
                 DataTable dt = new DataTable();
                 da.Fill(dt);
