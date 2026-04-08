@@ -42,6 +42,7 @@
             this.stockLbl = new System.Windows.Forms.Label();
             this.dgvSaleItems = new System.Windows.Forms.DataGridView();
             this.btnDeletStock = new System.Windows.Forms.Button();
+            this.btnAddStock = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSaleItems)).BeginInit();
@@ -164,11 +165,22 @@
             this.btnDeletStock.UseVisualStyleBackColor = true;
             this.btnDeletStock.Click += new System.EventHandler(this.btnDeletStock_Click);
             // 
+            // btnAddStock
+            // 
+            this.btnAddStock.Location = new System.Drawing.Point(40, 166);
+            this.btnAddStock.Name = "btnAddStock";
+            this.btnAddStock.Size = new System.Drawing.Size(133, 59);
+            this.btnAddStock.TabIndex = 10;
+            this.btnAddStock.Text = "Add Stock";
+            this.btnAddStock.UseVisualStyleBackColor = true;
+            this.btnAddStock.Click += new System.EventHandler(this.btnAddStock_Click);
+            // 
             // frmSeeSaleItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnAddStock);
             this.Controls.Add(this.btnDeletStock);
             this.Controls.Add(this.dgvSaleItems);
             this.Controls.Add(this.stockLbl);
@@ -204,5 +216,6 @@
         private System.Windows.Forms.Label stockLbl;
         private System.Windows.Forms.DataGridView dgvSaleItems;
         private System.Windows.Forms.Button btnDeletStock;
+        private System.Windows.Forms.Button btnAddStock;
     }
 }

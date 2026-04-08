@@ -103,6 +103,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database.cs" />
+    <Compile Include="frmAddStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddStock.Designer.cs">
+      <DependentUpon>frmAddStock.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSeeBasket.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +171,9 @@
     <Compile Include="frmRegisterMenu.Designer.cs">
       <DependentUpon>frmRegisterMenu.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmAddStock.resx">
+      <DependentUpon>frmAddStock.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMainMenu.resx">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
     </EmbeddedResource>

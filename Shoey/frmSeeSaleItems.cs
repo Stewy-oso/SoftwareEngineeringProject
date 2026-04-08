@@ -189,5 +189,13 @@ namespace Shoey
                 MessageBox.Show("Please select an item to delete first.");
             }
         }
+
+        private void btnAddStock_Click(object sender, EventArgs e)
+        {
+            frmAddStock frm = new frmAddStock();
+            frm.ShowDialog();
+
+            loadStockItems();
+        }
     }
 }

@@ -100,5 +100,34 @@ namespace Shoey
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public void AddNewStock(string name, int qty, decimal price, string colour, string manufacturer)
+        {
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = @"INSERT INTO PRODUCTS (PRODUCTID, NAME, COLOUR, MANUFACTURER, QTY, PRICE)
+                                VALUES (PRODUCT_SEQ.NEXTVAL, :name, :colour, :manufacturer, :qty, :price)";
+
+                /* 
+                 Title:  How to Get Nextval from Parameterized Sequence in Spring JPA: Fixing Hibernate Positional Param Exception
+                 Author: W3Tutorials.net
+                 Date: Jan 16, 2026
+                 Website: https://www.w3tutorials.net/blog/query-to-get-nextval-from-sequence-with-spring-jpa/
+                 Code: PRODUCT_SEQ  .NEXTVAL
+                 */
+
+                OracleCommand cmd = new OracleCommand(query, conn);
+
+                cmd.Parameters.Add(":name", name);
+                cmd.Parameters.Add(":colour", colour);
+                cmd.Parameters.Add(":manufacturer", manufacturer);
+                cmd.Parameters.Add(":qty", qty);
+                cmd.Parameters.Add(":price", price);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
