@@ -194,6 +194,7 @@ namespace Shoey
         {
             frmAddStock frm = new frmAddStock();
             frm.ShowDialog();
+            this.Close();
 
             loadStockItems();
         }

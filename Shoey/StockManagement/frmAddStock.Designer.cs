@@ -41,8 +41,8 @@
             this.lblManu = new System.Windows.Forms.Label();
             this.lblColour = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuExitBtn = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuBackBtn = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAddStock = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +64,7 @@
             this.txtPrice.Location = new System.Drawing.Point(334, 117);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(151, 20);
-            this.txtPrice.TabIndex = 2;
+            this.txtPrice.TabIndex = 4;
             this.txtPrice.Text = "0.00";
             // 
             // txtQty
@@ -72,21 +72,21 @@
             this.txtQty.Location = new System.Drawing.Point(334, 91);
             this.txtQty.Name = "txtQty";
             this.txtQty.Size = new System.Drawing.Size(151, 20);
-            this.txtQty.TabIndex = 3;
+            this.txtQty.TabIndex = 2;
             // 
             // txtManu
             // 
             this.txtManu.Location = new System.Drawing.Point(334, 65);
             this.txtManu.Name = "txtManu";
             this.txtManu.Size = new System.Drawing.Size(151, 20);
-            this.txtManu.TabIndex = 4;
+            this.txtManu.TabIndex = 1;
             // 
             // txtColour
             // 
             this.txtColour.Location = new System.Drawing.Point(334, 143);
             this.txtColour.Name = "txtColour";
             this.txtColour.Size = new System.Drawing.Size(151, 20);
-            this.txtColour.TabIndex = 5;
+            this.txtColour.TabIndex = 4;
             // 
             // lblName
             // 
@@ -136,29 +136,31 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem,
-            this.backToolStripMenuItem});
+            this.mnuExitBtn,
+            this.mnuBackBtn});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 11;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // backToolStripMenuItem
+            // mnuExitBtn
             // 
-            this.backToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.backToolStripMenuItem.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.backToolStripMenuItem.Name = "backToolStripMenuItem";
-            this.backToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.backToolStripMenuItem.Text = "Back";
+            this.mnuExitBtn.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.mnuExitBtn.BackColor = System.Drawing.Color.Red;
+            this.mnuExitBtn.Name = "mnuExitBtn";
+            this.mnuExitBtn.Size = new System.Drawing.Size(38, 20);
+            this.mnuExitBtn.Text = "Exit";
+            this.mnuExitBtn.Click += new System.EventHandler(this.mnuExitBtn_Click);
             // 
-            // exitToolStripMenuItem
+            // mnuBackBtn
             // 
-            this.exitToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.exitToolStripMenuItem.BackColor = System.Drawing.Color.Red;
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
-            this.exitToolStripMenuItem.Text = "Exit";
+            this.mnuBackBtn.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.mnuBackBtn.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.mnuBackBtn.Name = "mnuBackBtn";
+            this.mnuBackBtn.Size = new System.Drawing.Size(44, 20);
+            this.mnuBackBtn.Text = "Back";
+            this.mnuBackBtn.Click += new System.EventHandler(this.mnuBackBtn_Click);
             // 
             // btnAddStock
             // 
@@ -211,8 +213,8 @@
         private System.Windows.Forms.Label lblManu;
         private System.Windows.Forms.Label lblColour;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem backToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuBackBtn;
+        private System.Windows.Forms.ToolStripMenuItem mnuExitBtn;
         private System.Windows.Forms.Button btnAddStock;
     }
 }

@@ -45,6 +45,8 @@
             this.emailTxtBoxSignUp = new System.Windows.Forms.TextBox();
             this.dobLabelSignUp = new System.Windows.Forms.Label();
             this.dobPickerSignUp = new System.Windows.Forms.DateTimePicker();
+            this.lblSignupName = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.registerMenuBG)).BeginInit();
             this.SuspendLayout();
@@ -65,7 +67,7 @@
             this.exitRegisterMenu.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.exitRegisterMenu.BackColor = System.Drawing.Color.Red;
             this.exitRegisterMenu.Name = "exitRegisterMenu";
-            this.exitRegisterMenu.Size = new System.Drawing.Size(37, 20);
+            this.exitRegisterMenu.Size = new System.Drawing.Size(38, 20);
             this.exitRegisterMenu.Text = "Exit";
             this.exitRegisterMenu.Click += new System.EventHandler(this.exitRegisterMenuClick);
             // 
@@ -107,6 +109,7 @@
             this.signUpBtn.TabIndex = 3;
             this.signUpBtn.Text = "Sign Up";
             this.signUpBtn.UseVisualStyleBackColor = true;
+            this.signUpBtn.Click += new System.EventHandler(this.signUpBtn_Click);
             // 
             // emailTxtBoxSignIn
             // 
@@ -201,11 +204,30 @@
             this.dobPickerSignUp.TabIndex = 14;
             this.dobPickerSignUp.Value = new System.DateTime(2025, 12, 3, 16, 1, 59, 0);
             // 
-            // registerMenu
+            // lblSignupName
+            // 
+            this.lblSignupName.AutoSize = true;
+            this.lblSignupName.Location = new System.Drawing.Point(502, 111);
+            this.lblSignupName.Name = "lblSignupName";
+            this.lblSignupName.Size = new System.Drawing.Size(35, 13);
+            this.lblSignupName.TabIndex = 16;
+            this.lblSignupName.Text = "Name";
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(540, 108);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(148, 20);
+            this.txtName.TabIndex = 15;
+            this.txtName.Text = "Enter Name";
+            // 
+            // frmRegisterMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblSignupName);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.dobPickerSignUp);
             this.Controls.Add(this.dobLabelSignUp);
             this.Controls.Add(this.passwordLabelSignUp);
@@ -221,7 +243,7 @@
             this.Controls.Add(this.registerMenuBG);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "registerMenu";
+            this.Name = "frmRegisterMenu";
             this.Text = "Register";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -249,5 +271,7 @@
         private System.Windows.Forms.TextBox emailTxtBoxSignUp;
         private System.Windows.Forms.Label dobLabelSignUp;
         private System.Windows.Forms.DateTimePicker dobPickerSignUp;
+        private System.Windows.Forms.Label lblSignupName;
+        private System.Windows.Forms.TextBox txtName;
     }
 }

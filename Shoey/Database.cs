@@ -129,5 +129,24 @@ namespace Shoey
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public void CreateNewCust(string name, string email, string password) //find how to add dates
+        {
+            using(OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = @"INSERT INTO CUSTOMERS(CUSTOMERID, NAME, EMAIL, PASSWORD_HASH)
+                                 VALUES(CUSTOMER_SEQ.NEXTVAL, :name, :email, :password)";
+
+                OracleCommand cmd = new OracleCommand(query, conn);
+
+                cmd.Parameters.Add(":name", name);
+                cmd.Parameters.Add(":email", email);
+                cmd.Parameters.Add(":password", password);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

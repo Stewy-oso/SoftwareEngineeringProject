@@ -64,5 +64,23 @@ namespace Shoey
                 MessageBox.Show("Error! Product couldn't be added. Please try again. \n" + ex.Message);
             }
         }
+
+        private void mnuBackBtn_Click(object sender, EventArgs e)
+        {
+            frmSeeSaleItems frm = new frmSeeSaleItems();
+            frm.Show();
+
+            this.Close();
+        }
+
+        private void mnuExitBtn_Click(object sender, EventArgs e)
+        {
+            DialogResult diagResult = MessageBox.Show("Confirm Exit", "Are you sure? \n\nConfirm exit.", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (diagResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
     }
 }
