@@ -102,8 +102,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database.cs" />
-    <Compile Include="passwordHashing.cs" />
+    <Compile Include="Logic\Database.cs" />
+    <Compile Include="Logic\passwordHashing.cs" />
     <Compile Include="StockManagement\frmAddStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,7 +164,7 @@
     <Compile Include="StockManagement\frmUpdateStock.Designer.cs">
       <DependentUpon>frmUpdateStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Logic\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Main\frmRegisterMenu.cs">
       <SubType>Form</SubType>
@@ -172,7 +172,7 @@
     <Compile Include="Main\frmRegisterMenu.Designer.cs">
       <DependentUpon>frmRegisterMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="validator.cs" />
+    <Compile Include="Logic\validator.cs" />
     <EmbeddedResource Include="StockManagement\frmAddStock.resx">
       <DependentUpon>frmAddStock.cs</DependentUpon>
     </EmbeddedResource>

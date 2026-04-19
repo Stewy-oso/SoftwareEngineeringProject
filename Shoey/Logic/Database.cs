@@ -148,5 +148,92 @@ namespace Shoey
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public int CustIDFromDB(string email, string hashed)
+        {
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = "SELECT CUSTOMERID FROM CUSTOMERS WHERE EMAIL = :email AND PASSWORD_HASH = :password";
+
+                OracleCommand cmd = new OracleCommand(query, conn);
+
+                
+                cmd.Parameters.Add(":email", email);
+                cmd.Parameters.Add(":password", hashed);
+
+                object result = cmd.ExecuteScalar();
+
+                if (result == null)
+                {
+                    return -1;
+                }
+                else
+                {
+                    return Convert.ToInt32(result);
+                }
+            }
+        }
+
+        /*
+         CREATE A LOGIN, MAYBE THROUGH EMAIL?
+         */
+
+        // had to make int to return a value, in this case to pass through sales 
+        public int CreateOrder(int productID, int qty)
+        {
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+
+                string query1 = @"INSERT INTO ORDERS (ORDERID, PRODUCTID, QUANTITY)
+                                 VALUES (ORDERS_SEQ.NEXTVAL, :p_id, :p_qty)";
+
+                OracleCommand cmd = new OracleCommand(query1, conn);
+                
+                cmd.Parameters.Add(":p_id", productID);
+                cmd.Parameters.Add(":p_qty", qty);
+
+                  
+
+                string query2 = "SELECT ORDERS_SEQ.CURRVAL FROM DUAL";
+
+                /* 
+                 Title:  SQL Language Reference
+                 Author: oracle.com
+                 Date: November 2025
+                 Website: https://docs.oracle.com/en/database/oracle//oracle-database/19/sqlrf/Sequence-Pseudocolumns.html
+                 Code: ORDERS_SEQ.CURRVAL
+                 */
+
+                OracleCommand cmd1 = new OracleCommand(query2, conn);
+                
+                return Convert.ToInt32(cmd1.ExecuteScalar());
+                
+            }
+        }
+
+        public void CreateSale(int productId, int qty, int customerId, decimal total)
+        {
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+
+                int orderId = CreateOrder(productId, qty);
+
+                string query = @"INSERT INTO SALES (SALEID, SALES_DATE, TOTAL, ORDERID, CUSTOMERID)
+                                 VALUES (SALES_SEQ.NEXTVAL, SYSDATE, :total, :orderId, :customerId)";
+
+                OracleCommand cmd = new OracleCommand(query, conn);
+                
+                cmd.Parameters.Add(":total", total);
+                cmd.Parameters.Add(":orderId", orderId);
+                cmd.Parameters.Add(":customerId", customerId);
+
+                cmd.ExecuteNonQuery();
+                
+            }
+        }
     }
 }

@@ -18,6 +18,10 @@ namespace Shoey
             InitializeComponent();
         }
 
+        public static class Session {
+            public static int CustomerID { get; set; }
+        }
+
         private void exitRegisterMenuClick(object sender, EventArgs e)
         {
             DialogResult diagResult = MessageBox.Show("Confirm Exit", "Are you sure? \n\nConfirm exit.", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

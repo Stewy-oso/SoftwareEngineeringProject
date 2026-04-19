@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -63,85 +64,28 @@ namespace Shoey
 
         }
 
-        private void RefreshBasketList()
-        {
-            listBoxBasket.DataSource = null;
-            listBoxBasket.DataSource = Basket;
-        }
-
-        public void AddProductToBasket(Product p)
-        {
-            Basket.Add(p);
-            RefreshBasketList();
-        }
-
-        private void btnPurchase_Click(object sender, EventArgs e)
-        {
-
-            var selectedProducts = listBoxBasket.SelectedItems.Cast<frmSeeCatalogue.Product>().ToList();
-
-            if (Basket.Count == 0)
-            {
-                MessageBox.Show("Your basket is empty.", "No Items", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            DialogResult result = MessageBox.Show(
-                "Do you want to purchase " + selectedProducts.Count + " items?",
-                "Confirm Purchase",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-
-                frmSeePrevPurchase.AddPurchasedProducts(selectedProducts);
-
-                foreach (var product in selectedProducts)
-                {
-                    Basket.Remove(product);
-                }
-                
-                RefreshBasketList();
-
-                MessageBox.Show("Purchase completed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
         private void listBoxBasket_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void buyAllBtn_Click(object sender, EventArgs e)
+        private void btnCheckout_Click(object sender, EventArgs e)
         {
-            var selectedProducts = listBoxBasket.SelectedItems.Cast<frmSeeCatalogue.Product>().ToList();
+            string email = txtEmail.Text;
+            string password = txtPassword.Text;
+            string hashedPassword = passwordHashing.HashPassword(password);
 
-            if (Basket.Count == 0)
+            Database db = new Database();
+
+            int customerID = db.CustIDFromDB(email, hashedPassword);
+
+            if (customerID != -1)
             {
-                MessageBox.Show("Your basket is empty.", "No Items", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                db.CreateSale(qty, customerID, total);
             }
-
-            DialogResult result = MessageBox.Show(
-                "Do you want to purchase all items?",
-                "Confirm Purchase",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
+            else
             {
-
-                frmSeePrevPurchase.AddPurchasedProducts(selectedProducts);
-
-                foreach (var product in selectedProducts)
-                {
-                    Basket.Remove(product);
-                }
-
-                RefreshBasketList();
-
-                MessageBox.Show("Purchase completed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Invalid login");
             }
         }
     }
