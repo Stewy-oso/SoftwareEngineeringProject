@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shoey.Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +15,6 @@ namespace Shoey
 {
     public partial class frmSeeBasket : Form
     {
-        public static List<frmSeeCatalogue.Product> Basket = new List<frmSeeCatalogue.Product>();
-
-        
-
         public frmSeeBasket()
         {
             InitializeComponent();
@@ -58,10 +55,18 @@ namespace Shoey
 
             this.Close();
         }
+            private void LoadBasket()
+        {
+            dgvBasket.AutoGenerateColumns = true;
+            dgvBasket.DataSource = null;
+            dgvBasket.DataSource = CartManager.Basket;
+
+            UpdateTotal();
+        }
 
         private void frmSeeBasket_Load(object sender, EventArgs e)
         {
-
+            LoadBasket();
         }
 
         private void listBoxBasket_Click(object sender, EventArgs e)
@@ -69,6 +74,13 @@ namespace Shoey
 
         }
 
+        private void UpdateTotal()
+        {
+            decimal total = CartManager.Basket.Sum(x => x.Subtotal);
+            lblTotalAmt.Text = total.ToString("0.00");
+        }
+
+        // A really broken checkout ahha
         private void btnCheckout_Click(object sender, EventArgs e)
         {
             string email = txtEmail.Text;
@@ -81,12 +93,39 @@ namespace Shoey
 
             if (customerID != -1)
             {
-                db.CreateSale(qty, customerID, total);
+                int qty = CartManager.Basket.Sum(x => x.Quantity);
+                decimal total = CartManager.Basket.Sum(x => x.Subtotal);
+                int productID = CartManager.Basket.First().ProductID;
+
+                db.CreateSale(productID, qty, customerID, total);
             }
             else
             {
                 MessageBox.Show("Invalid login");
             }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (dgvBasket.CurrentRow == null)
+                return;
+
+            int productId = Convert.ToInt32(dgvBasket.CurrentRow.Cells["ProductID"].Value);
+
+            var item = CartManager.Basket.FirstOrDefault(x => x.ProductID == productId);
+
+            if (item != null)
+            {
+                CartManager.Basket.Remove(item);
+            }
+
+            LoadBasket();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            CartManager.Clear();
+            LoadBasket();
         }
     }
 }

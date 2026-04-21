@@ -102,8 +102,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logic\CartManager.cs" />
     <Compile Include="Logic\Database.cs" />
     <Compile Include="Logic\passwordHashing.cs" />
+    <Compile Include="Logic\InventoryItem.cs" />
     <Compile Include="StockManagement\frmAddStock.cs">
       <SubType>Form</SubType>
     </Compile>

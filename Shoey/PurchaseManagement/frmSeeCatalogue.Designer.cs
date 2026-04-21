@@ -35,11 +35,12 @@
             this.goToBasket = new System.Windows.Forms.ToolStripMenuItem();
             this.goToPrevPurchases = new System.Windows.Forms.ToolStripMenuItem();
             this.catalogueBG = new System.Windows.Forms.PictureBox();
-            this.listBoxProducts = new System.Windows.Forms.ListBox();
             this.ListBoxLbl = new System.Windows.Forms.Label();
             this.btnAddToBasket = new System.Windows.Forms.Button();
+            this.dgvCatalogue = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.catalogueBG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCatalogue)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -60,7 +61,7 @@
             this.exitSys.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.exitSys.BackColor = System.Drawing.Color.Red;
             this.exitSys.Name = "exitSys";
-            this.exitSys.Size = new System.Drawing.Size(37, 20);
+            this.exitSys.Size = new System.Drawing.Size(38, 20);
             this.exitSys.Text = "Exit";
             this.exitSys.Click += new System.EventHandler(this.exitSys_Click);
             // 
@@ -97,19 +98,10 @@
             this.catalogueBG.TabIndex = 1;
             this.catalogueBG.TabStop = false;
             // 
-            // listBoxProducts
-            // 
-            this.listBoxProducts.FormattingEnabled = true;
-            this.listBoxProducts.Location = new System.Drawing.Point(422, 84);
-            this.listBoxProducts.Name = "listBoxProducts";
-            this.listBoxProducts.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listBoxProducts.Size = new System.Drawing.Size(366, 134);
-            this.listBoxProducts.TabIndex = 2;
-            // 
             // ListBoxLbl
             // 
             this.ListBoxLbl.AutoSize = true;
-            this.ListBoxLbl.Location = new System.Drawing.Point(471, 68);
+            this.ListBoxLbl.Location = new System.Drawing.Point(258, 44);
             this.ListBoxLbl.Name = "ListBoxLbl";
             this.ListBoxLbl.Size = new System.Drawing.Size(253, 13);
             this.ListBoxLbl.TabIndex = 3;
@@ -117,7 +109,7 @@
             // 
             // btnAddToBasket
             // 
-            this.btnAddToBasket.Location = new System.Drawing.Point(505, 224);
+            this.btnAddToBasket.Location = new System.Drawing.Point(302, 289);
             this.btnAddToBasket.Name = "btnAddToBasket";
             this.btnAddToBasket.Size = new System.Drawing.Size(185, 59);
             this.btnAddToBasket.TabIndex = 4;
@@ -125,14 +117,25 @@
             this.btnAddToBasket.UseVisualStyleBackColor = true;
             this.btnAddToBasket.Click += new System.EventHandler(this.btnBuy_Click);
             // 
+            // dgvCatalogue
+            // 
+            this.dgvCatalogue.AllowUserToAddRows = false;
+            this.dgvCatalogue.AllowUserToDeleteRows = false;
+            this.dgvCatalogue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCatalogue.Location = new System.Drawing.Point(237, 60);
+            this.dgvCatalogue.Name = "dgvCatalogue";
+            this.dgvCatalogue.ReadOnly = true;
+            this.dgvCatalogue.Size = new System.Drawing.Size(316, 223);
+            this.dgvCatalogue.TabIndex = 5;
+            // 
             // frmSeeCatalogue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dgvCatalogue);
             this.Controls.Add(this.btnAddToBasket);
             this.Controls.Add(this.ListBoxLbl);
-            this.Controls.Add(this.listBoxProducts);
             this.Controls.Add(this.catalogueBG);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -143,6 +146,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.catalogueBG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCatalogue)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -156,8 +160,8 @@
         private System.Windows.Forms.ToolStripMenuItem goToBasket;
         private System.Windows.Forms.ToolStripMenuItem goToPrevPurchases;
         private System.Windows.Forms.PictureBox catalogueBG;
-        private System.Windows.Forms.ListBox listBoxProducts;
         private System.Windows.Forms.Label ListBoxLbl;
         private System.Windows.Forms.Button btnAddToBasket;
+        private System.Windows.Forms.DataGridView dgvCatalogue;
     }
 }

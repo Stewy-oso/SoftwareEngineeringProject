@@ -40,15 +40,11 @@ namespace Shoey
         {
             if(int.TryParse(cmbYear.SelectedItem.ToString(), out int selectedYear))
             {
+
+                Database db = new Database();
             
-             var soldItems = frmSeeSaleItems.SaleItems
-             .Where(item => item.Sold)
-             .ToList();
-
-             decimal totalRevenue = soldItems.Sum(item => item.Price);
-
              lblYearlyRevenue.Text =
-                "Total Revenue for" + selectedYear + ": €" + totalRevenue.ToString();
+                "Total Revenue for" + selectedYear + ": €" + db.FindSaleTotal();
             }
             else
             {

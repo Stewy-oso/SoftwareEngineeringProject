@@ -81,6 +81,13 @@ namespace Shoey
                     emailTxtBoxSignUp.Text,
                     hashedPassword
                     );
+
+                MessageBox.Show("Successfully registered!");
+
+                frmMainMenu menu = new frmMainMenu();
+                menu.Show();
+
+                this.Close();
             }
             catch (Exception ex)
             {

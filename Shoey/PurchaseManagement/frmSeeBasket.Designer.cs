@@ -36,20 +36,19 @@
             this.goToPrevPrchsFrm = new System.Windows.Forms.ToolStripMenuItem();
             this.basketBG = new System.Windows.Forms.PictureBox();
             this.basketLbl = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvBasket = new System.Windows.Forms.DataGridView();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblTotalAmt = new System.Windows.Forms.Label();
             this.btnCheckout = new System.Windows.Forms.Button();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblPass = new System.Windows.Forms.Label();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.basketBG)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBasket)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -117,19 +116,15 @@
             this.basketLbl.Text = "Basket";
             this.basketLbl.Click += new System.EventHandler(this.listBoxBasket_Click);
             // 
-            // dataGridView1
+            // dgvBasket
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Name,
-            this.Quantity,
-            this.Price});
-            this.dataGridView1.Location = new System.Drawing.Point(320, 72);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(343, 166);
-            this.dataGridView1.TabIndex = 4;
+            this.dgvBasket.AllowUserToAddRows = false;
+            this.dgvBasket.AllowUserToDeleteRows = false;
+            this.dgvBasket.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBasket.Location = new System.Drawing.Point(320, 72);
+            this.dgvBasket.Name = "dgvBasket";
+            this.dgvBasket.Size = new System.Drawing.Size(343, 166);
+            this.dgvBasket.TabIndex = 4;
             // 
             // lblTotal
             // 
@@ -151,33 +146,13 @@
             // 
             // btnCheckout
             // 
-            this.btnCheckout.Location = new System.Drawing.Point(428, 257);
+            this.btnCheckout.Location = new System.Drawing.Point(558, 259);
             this.btnCheckout.Name = "btnCheckout";
-            this.btnCheckout.Size = new System.Drawing.Size(126, 60);
+            this.btnCheckout.Size = new System.Drawing.Size(105, 60);
             this.btnCheckout.TabIndex = 7;
             this.btnCheckout.Text = "Checkout";
             this.btnCheckout.UseVisualStyleBackColor = true;
             this.btnCheckout.Click += new System.EventHandler(this.btnCheckout_Click);
-            // 
-            // Name
-            // 
-            this.Name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Name.HeaderText = "Name";
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
-            // 
-            // Quantity
-            // 
-            this.Quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            this.Quantity.ReadOnly = true;
-            // 
-            // Price
-            // 
-            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
             // 
             // txtEmail
             // 
@@ -211,11 +186,33 @@
             this.lblPass.TabIndex = 11;
             this.lblPass.Text = "Password:";
             // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(434, 259);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(118, 60);
+            this.btnRemove.TabIndex = 12;
+            this.btnRemove.Text = "Remove Item";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(320, 259);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(108, 60);
+            this.btnClear.TabIndex = 13;
+            this.btnClear.Text = "Clear Basket";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // frmSeeBasket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.lblPass);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.txtPassword);
@@ -223,7 +220,7 @@
             this.Controls.Add(this.btnCheckout);
             this.Controls.Add(this.lblTotalAmt);
             this.Controls.Add(this.lblTotal);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvBasket);
             this.Controls.Add(this.basketLbl);
             this.Controls.Add(this.basketBG);
             this.Controls.Add(this.menuStrip1);
@@ -235,7 +232,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.basketBG)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBasket)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -250,16 +247,15 @@
         private System.Windows.Forms.ToolStripMenuItem goToCatalogueFrm;
         private System.Windows.Forms.ToolStripMenuItem goToPrevPrchsFrm;
         private System.Windows.Forms.Label basketLbl;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvBasket;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label lblTotalAmt;
         private System.Windows.Forms.Button btnCheckout;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblPass;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnClear;
     }
 }

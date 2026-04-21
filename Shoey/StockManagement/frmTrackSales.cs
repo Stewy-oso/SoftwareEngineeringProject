@@ -53,12 +53,10 @@ namespace Shoey
 
         private void RefreshSalesList()
         {
-            var soldItems = frmSeeSaleItems.SaleItems.Where(i => i.Sold).ToList();
+            Database db = new Database();
+            var soldItems = db.ListSales();
             listBoxSoldItems.DataSource = null;
             listBoxSoldItems.DataSource = soldItems;
-
-            decimal totalRevenue = soldItems.Sum(i => i.Price);
-            lblTotalRevenue.Text = "Total Revenue: €" + totalRevenue;
         }
 
         private void goToAnalytics_Click(object sender, EventArgs e)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using Shoey.Logic;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,14 +11,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Oracle.ManagedDataAccess.Client;
+using System.Xml.Linq;
+using static Shoey.frmSeeSaleItems;
 
 namespace Shoey
 {
     public partial class frmSeeCatalogue : Form
     {
-
-        List<Product> products = new List<Product>();
 
         public frmSeeCatalogue()
         {
@@ -57,73 +58,51 @@ namespace Shoey
             this.Close();
         }
 
-        public class Product
-        {
-            public String Name { get; set; }
-            public decimal Price { get; set; }
-            public int Stock {  get; set; }
-
-            public override string ToString()
-            {
-                return Name + "||     €||" + Price + "||     Stock Available:    ||" + Stock;
-            }
-        }
-
-        private void RefreshList()
-        {
-            listBoxProducts.DataSource = null;
-            listBoxProducts.DataSource = products;
-        }
-
-
         private void frmSeeCatalogue_Load(object sender, EventArgs e)
         {
-            products.Add(new Product { Name = "Air Max", Price = 120, Stock = 15 });
-            products.Add(new Product { Name = "Jordans", Price = 150, Stock = 8 });
-            products.Add(new Product { Name = "NB 9060", Price = 90, Stock = 24 });
-            products.Add(new Product { Name = "Airforce 1", Price = 110, Stock = 14 });
-            products.Add(new Product { Name = "NB 950", Price = 60, Stock = 12 });
-            products.Add(new Product { Name = "SKECHERS Walkers", Price = 75, Stock = 10 });
-            products.Add(new Product { Name = "DC Hyde", Price = 55, Stock = 20 });
-            products.Add(new Product { Name = "DC Gaveler (Black)", Price = 65, Stock = 19 });
-            products.Add(new Product { Name = "DC Gaveler (Grey)", Price = 65, Stock = 9 });
+            loadStockItems();
+        }
 
-            RefreshList();
+        private void loadStockItems()
+        {
+            Database db = new Database();
+            DataTable dt = db.getSaleItems();
+
+            dgvCatalogue.AutoGenerateColumns = true;
+            dgvCatalogue.DataSource = dt;
+
+            dgvCatalogue.Columns["NAME"].HeaderText = "Name";
+            dgvCatalogue.Columns["QTY"].HeaderText = "Quantity";
+            dgvCatalogue.Columns["PRICE"].HeaderText = "Price";
+
+            //Hide columns
+            dgvCatalogue.Columns["PRODUCTID"].Visible = false;
+            dgvCatalogue.Columns["COLOUR"].Visible = false;
+            dgvCatalogue.Columns["MANUFACTURER"].Visible = false;
+
+            //Force sizing all columns & cells
+            //dgvSaleItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //dgvSaleItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void btnBuy_Click(object sender, EventArgs e)
         {
-            var selectedProducts = listBoxProducts.SelectedItems.Cast<Product>().ToList();
+            if (dgvCatalogue.CurrentRow == null)
+                return;
 
+            int productId = Convert.ToInt32(dgvCatalogue.CurrentRow.Cells["PRODUCTID"].Value);
+            string name = dgvCatalogue.CurrentRow.Cells["NAME"].Value.ToString();
+            decimal price = Convert.ToDecimal(dgvCatalogue.CurrentRow.Cells["PRICE"].Value);
 
-            if (listBoxProducts.SelectedItem is Product selectedProduct)
+            CartManager.AddItem(new CartItem
             {
-                DialogResult result = MessageBox.Show("Do you want to buy " + selectedProducts.Count + " items?",
-                    "Confirm Purchase",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                ProductID = productId,
+                Name = name,
+                Quantity = 1,
+                Price = price
+            });
 
-                if (result == DialogResult.Yes)
-                {
-
-                    frmSeeBasket seeBasket = new frmSeeBasket();
-                    foreach (Product product in selectedProducts)
-                    {
-                        frmSeeBasket.Basket.Add(product);
-                    }
-                    seeBasket.Show();
-
-                    this.Hide();
-                }
-
-                
-
-            }
-            else
-            {
-                MessageBox.Show("Please select a product first.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
-
+            MessageBox.Show("Item added to Basket!");
         }
     }
 }

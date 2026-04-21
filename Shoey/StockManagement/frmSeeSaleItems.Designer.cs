@@ -40,12 +40,12 @@
             this.btnUpdateStock = new System.Windows.Forms.Button();
             this.txtStock = new System.Windows.Forms.TextBox();
             this.stockLbl = new System.Windows.Forms.Label();
-            this.dgvSaleItems = new System.Windows.Forms.DataGridView();
+            this.dgvBasket = new System.Windows.Forms.DataGridView();
             this.btnDeletStock = new System.Windows.Forms.Button();
             this.btnAddStock = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSaleItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBasket)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -131,7 +131,7 @@
             this.stockLbl.TabIndex = 7;
             this.stockLbl.Text = "Stock Amount for selected item";
             // 
-            // dgvSaleItems
+            // dgvBasket
             // 
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -140,8 +140,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvSaleItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvSaleItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvBasket.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvBasket.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -149,11 +149,11 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvSaleItems.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvSaleItems.Location = new System.Drawing.Point(212, 60);
-            this.dgvSaleItems.Name = "dgvSaleItems";
-            this.dgvSaleItems.Size = new System.Drawing.Size(399, 283);
-            this.dgvSaleItems.TabIndex = 8;
+            this.dgvBasket.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvBasket.Location = new System.Drawing.Point(212, 60);
+            this.dgvBasket.Name = "dgvBasket";
+            this.dgvBasket.Size = new System.Drawing.Size(399, 283);
+            this.dgvBasket.TabIndex = 8;
             // 
             // btnDeletStock
             // 
@@ -182,7 +182,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnAddStock);
             this.Controls.Add(this.btnDeletStock);
-            this.Controls.Add(this.dgvSaleItems);
+            this.Controls.Add(this.dgvBasket);
             this.Controls.Add(this.stockLbl);
             this.Controls.Add(this.txtStock);
             this.Controls.Add(this.btnUpdateStock);
@@ -197,7 +197,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvSaleItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvBasket)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -214,7 +214,7 @@
         private System.Windows.Forms.Button btnUpdateStock;
         private System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.Label stockLbl;
-        private System.Windows.Forms.DataGridView dgvSaleItems;
+        private System.Windows.Forms.DataGridView dgvBasket;
         private System.Windows.Forms.Button btnDeletStock;
         private System.Windows.Forms.Button btnAddStock;
     }

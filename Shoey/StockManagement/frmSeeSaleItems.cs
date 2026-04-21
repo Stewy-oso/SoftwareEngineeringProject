@@ -13,10 +13,6 @@ namespace Shoey
 {
     public partial class frmSeeSaleItems : Form
     {
-
-        Database db = new Database();
-
-        public static List<SaleItem> SaleItems = new List<SaleItem>();
         public frmSeeSaleItems()
         {
             InitializeComponent();
@@ -48,58 +44,15 @@ namespace Shoey
             this.Close();
         }
 
-        public class SaleItem
-        {
-            public String Name {  get; set; }
-            public int Stock {  get; set; }
-            public decimal Price { get; set; }
-            public bool Sold { get; set; } = false;
-
-            public override string ToString()
-            {
-                return "Name: " + Name + "Price: " + Price + "Stock: " + Stock + "Sold: " + Sold;
-            }
-        }
-
         private void frmSeeSaleItems_Load(object sender, EventArgs e)
         {
             loadStockItems();
-
-            //DataTable dt = db.getSaleItems();
-
-            //cbSaleItems.DataSource = dt;
-            //cbSaleItems.DisplayMember = "NAME";
-            //cbSaleItems.ValueMember = "PRODUCTID";
-            /*
-            foreach (var p in frmSeePrevPurchase.PreviousPurchases)
-            {
-                if (!SaleItems.Any(s => s.Name == p.Name))
-                {
-                    SaleItems.Add(new SaleItem
-                    {
-                        Name = p.Name,
-                        Price = p.Price,
-                        Stock = p.Stock
-                    });
-                }
-            }
-            */
-
-            //RefreshSaleItemsList();
-        }
-
-        private void RefreshSaleItemsList()
-        {
-            /*
-            listBoxSaleItems.DataSource = null;
-            listBoxSaleItems.DataSource = SaleItems;
-            */
         }
 
         private void btnUpdateStock_Click(object sender, EventArgs e)
         { 
-            if(dgvSaleItems.SelectedRows.Count > 0) {
-                int productID = Convert.ToInt32(dgvSaleItems.SelectedRows[0].Cells["PRODUCTID"].Value);
+            if(dgvBasket.SelectedRows.Count > 0) {
+                int productID = Convert.ToInt32(dgvBasket.SelectedRows[0].Cells["PRODUCTID"].Value);
 
                 frmUpdateStock frm = new frmUpdateStock(productID);
                 frm.ShowDialog();
@@ -112,40 +65,22 @@ namespace Shoey
             }
         }
 
-        private void markAsSoldBtn_Click(object sender, EventArgs e)
-        { /*
-            if (listBoxSaleItems.SelectedItem is SaleItem item)
-            {
-                if (item.Stock > 0)
-                {
-                    item.Stock -= 1;
-                    item.Sold = true;
-                    RefreshSaleItemsList();
-                }
-                else
-                {
-                    MessageBox.Show("Cannot sell, out of stock.");
-                }
-            }
-            */
-        }
-
         private void loadStockItems()
         {
             Database db = new Database();
             DataTable dt = db.getSaleItems();
 
-            dgvSaleItems.AutoGenerateColumns = true;
-            dgvSaleItems.DataSource = dt;
+            dgvBasket.AutoGenerateColumns = true;
+            dgvBasket.DataSource = dt;
 
-            dgvSaleItems.Columns["NAME"].HeaderText = "Name";
-            dgvSaleItems.Columns["QTY"].HeaderText = "Quantity";
-            dgvSaleItems.Columns["PRICE"].HeaderText = "Price";
+            dgvBasket.Columns["NAME"].HeaderText = "Name";
+            dgvBasket.Columns["QTY"].HeaderText = "Quantity";
+            dgvBasket.Columns["PRICE"].HeaderText = "Price";
             
             //Hide columns
-            dgvSaleItems.Columns["PRODUCTID"].Visible = false;
-            dgvSaleItems.Columns["COLOUR"].Visible = false;
-            dgvSaleItems.Columns["MANUFACTURER"].Visible = false;
+            dgvBasket.Columns["PRODUCTID"].Visible = false;
+            dgvBasket.Columns["COLOUR"].Visible = false;
+            dgvBasket.Columns["MANUFACTURER"].Visible = false;
 
             //Force sizing all columns & cells
             //dgvSaleItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -154,10 +89,10 @@ namespace Shoey
 
         private void btnDeletStock_Click(object sender, EventArgs e)
         {
-            if (dgvSaleItems.SelectedRows.Count > 0)
+            if (dgvBasket.SelectedRows.Count > 0)
             {
-                int productID = Convert.ToInt32(dgvSaleItems.SelectedRows[0].Cells["PRODUCTID"].Value);
-                string productName = dgvSaleItems.SelectedRows[0].Cells["NAME"].Value.ToString();
+                int productID = Convert.ToInt32(dgvBasket.SelectedRows[0].Cells["PRODUCTID"].Value);
+                string productName = dgvBasket.SelectedRows[0].Cells["NAME"].Value.ToString();
 
                 DialogResult result = MessageBox.Show(
                     "Are you sure you want to delete " + productName + " ?",

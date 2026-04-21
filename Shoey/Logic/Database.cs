@@ -195,7 +195,7 @@ namespace Shoey
                 cmd.Parameters.Add(":p_id", productID);
                 cmd.Parameters.Add(":p_qty", qty);
 
-                  
+                cmd.ExecuteNonQuery();  
 
                 string query2 = "SELECT ORDERS_SEQ.CURRVAL FROM DUAL";
 
@@ -214,13 +214,13 @@ namespace Shoey
             }
         }
 
-        public void CreateSale(int productId, int qty, int customerId, decimal total)
+        public void CreateSale(int ProductID, int qty, int customerId, decimal total)
         {
             using (OracleConnection conn = new OracleConnection(connectionString))
             {
                 conn.Open();
 
-                int orderId = CreateOrder(productId, qty);
+                int orderId = CreateOrder(ProductID, qty);
 
                 string query = @"INSERT INTO SALES (SALEID, SALES_DATE, TOTAL, ORDERID, CUSTOMERID)
                                  VALUES (SALES_SEQ.NEXTVAL, SYSDATE, :total, :orderId, :customerId)";
@@ -233,6 +233,34 @@ namespace Shoey
 
                 cmd.ExecuteNonQuery();
                 
+            }
+        }
+
+        public int FindSaleTotal()
+        {
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = "SELECT TOTAL FROM SALES";
+
+                OracleCommand cmd = new OracleCommand(query, conn);
+
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+
+        public String ListSales()
+        {
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM SALES";
+
+                OracleCommand cmd = new OracleCommand(query, conn);
+
+                return Convert.ToString(cmd.ExecuteScalar());
             }
         }
     }

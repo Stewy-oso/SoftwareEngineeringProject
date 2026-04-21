@@ -12,9 +12,6 @@ namespace Shoey
 {
     public partial class frmSeePrevPurchase : Form
     {
-
-        public static List<frmSeeCatalogue.Product> PreviousPurchases = new List<frmSeeCatalogue.Product>();
-
         public frmSeePrevPurchase()
         {
             InitializeComponent();
@@ -23,12 +20,7 @@ namespace Shoey
         private void RefreshPurchaseList()
         {
             listBoxPrevPurch.DataSource = null;
-            listBoxPrevPurch.DataSource = PreviousPurchases;
-        }
 
-        public static void AddPurchasedProducts(List<frmSeeCatalogue.Product> purchasedProducts)
-        {
-            PreviousPurchases.AddRange(purchasedProducts);
         }
 
         private void frmSeePrevPurchase_Load(object sender, EventArgs e)
