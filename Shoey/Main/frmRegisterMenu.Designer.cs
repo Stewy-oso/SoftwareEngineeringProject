@@ -161,7 +161,6 @@
             this.passwordTxtBoxSignUp.Location = new System.Drawing.Point(540, 160);
             this.passwordTxtBoxSignUp.MaxLength = 12;
             this.passwordTxtBoxSignUp.Name = "passwordTxtBoxSignUp";
-            this.passwordTxtBoxSignUp.PasswordChar = '*';
             this.passwordTxtBoxSignUp.Size = new System.Drawing.Size(148, 20);
             this.passwordTxtBoxSignUp.TabIndex = 10;
             // 

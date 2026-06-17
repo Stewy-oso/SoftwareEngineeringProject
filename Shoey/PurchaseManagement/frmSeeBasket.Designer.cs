@@ -123,6 +123,7 @@
             this.dgvBasket.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBasket.Location = new System.Drawing.Point(320, 72);
             this.dgvBasket.Name = "dgvBasket";
+            this.dgvBasket.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvBasket.Size = new System.Drawing.Size(343, 166);
             this.dgvBasket.TabIndex = 4;
             // 
@@ -165,6 +166,7 @@
             // 
             this.txtPassword.Location = new System.Drawing.Point(107, 98);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(179, 20);
             this.txtPassword.TabIndex = 9;
             // 

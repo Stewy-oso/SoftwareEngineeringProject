@@ -62,6 +62,32 @@ namespace Shoey
 
             return Valid;
         }
+
+        // Maybe I should keep the const ints public or outside the functions so I can use them in all instances
+        public static int IsValidName(string name)
+        {
+            const int Valid = 0;
+            const int Empty = 1;
+            const int InvalidLen = 2;
+            const int InvalidChars = 3;
+
+            if(string.IsNullOrEmpty(name))
+            {
+                return Empty;
+            }
+            if(name.Length > 35)
+            {
+                return InvalidLen;
+            }
+            if(!name.All(char.IsLetter))
+            {
+                return InvalidChars;
+            }
+            
+            return Valid;
+        }
+
+
     
     }
 }
