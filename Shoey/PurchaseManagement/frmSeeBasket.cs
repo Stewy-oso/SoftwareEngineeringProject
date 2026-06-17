@@ -89,7 +89,7 @@ namespace Shoey
 
             Database db = new Database();
 
-            int customerID = db.CustIDFromDB(email, hashedPassword);
+            int customerID = db.Login(email, hashedPassword);
 
             if (customerID != -1)
             {

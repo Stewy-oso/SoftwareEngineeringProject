@@ -149,7 +149,7 @@ namespace Shoey
             }
         }
 
-        public int CustIDFromDB(string email, string hashed)
+        public int Login(string email, string hashed)
         {
             using (OracleConnection conn = new OracleConnection(connectionString))
             {
@@ -233,6 +233,24 @@ namespace Shoey
 
                 cmd.ExecuteNonQuery();
                 
+            }
+        }
+
+        public string GetCustomerName(int custID)
+        {
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = "SELECT Forename, Surname FROM Customers WHERE CustomerID = :custID";
+
+                OracleCommand cmd = new OracleCommand(query, conn);
+
+                cmd.Parameters.Add(":custID", custID);
+
+                object result = cmd.ExecuteScalar();
+
+                return result.ToString();
             }
         }
 

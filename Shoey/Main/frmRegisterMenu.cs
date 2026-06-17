@@ -42,7 +42,7 @@ namespace Shoey
 
         private void passwordLabelSignIn_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -92,6 +92,37 @@ namespace Shoey
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void signInBtn_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(emailTxtBoxSignIn.Text))
+            {
+                MessageBox.Show("Email cannot be empty!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(passwordTxtBoxSignIn.Text))
+            {
+                MessageBox.Show("Password cannot be empty!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string email = emailTxtBoxSignIn.Text;
+            string password = passwordTxtBoxSignIn.Text;
+            string hash = passwordHashing.HashPassword(password);
+
+            Database db = new Database();
+
+            int custID = db.Login(email, hash);
+            if(custID != -1)
+            {
+                MessageBox.Show("Successfully Logged In! Welcome " + db.GetCustomerName(custID), "Welcome!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                MessageBox.Show("Cannot Login. Check password?", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
