@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Shoey
 {
@@ -22,6 +23,45 @@ namespace Shoey
             }
         }
 
-        // Note to self: Reference the email validator later.
+        public static int IsValidPhone(string phone)
+        {
+            const int Valid = 0;
+            const int Empty = 1;
+            const int InvalidLen = 2;
+            const int InvalidChars = 3;
+
+          
+            if (string.IsNullOrEmpty(phone))
+            {
+                return Empty;
+            }
+
+            if (phone.StartsWith("+"))
+            {
+                if( phone.Length != 13)
+                {
+                    return InvalidLen;
+                }
+                if(!phone.Substring(1).All(char.IsDigit))
+                {
+                    return InvalidChars;
+                }
+            }
+
+            else
+            {
+                if(phone.Length != 10)
+                {
+                    return InvalidLen;
+                }
+                if(!phone.All(char.IsDigit))
+                {
+                    return InvalidChars;
+                }
+            }
+
+            return Valid;
+        }
+    
     }
 }
