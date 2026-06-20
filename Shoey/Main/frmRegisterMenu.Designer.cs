@@ -47,6 +47,8 @@
             this.dobPickerSignUp = new System.Windows.Forms.DateTimePicker();
             this.lblSignupName = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
+            this.txtSurname = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.registerMenuBG)).BeginInit();
             this.SuspendLayout();
@@ -104,7 +106,7 @@
             // signUpBtn
             // 
             this.signUpBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.signUpBtn.Location = new System.Drawing.Point(553, 212);
+            this.signUpBtn.Location = new System.Drawing.Point(567, 198);
             this.signUpBtn.Name = "signUpBtn";
             this.signUpBtn.Size = new System.Drawing.Size(85, 37);
             this.signUpBtn.TabIndex = 3;
@@ -151,7 +153,7 @@
             // passwordLabelSignUp
             // 
             this.passwordLabelSignUp.AutoSize = true;
-            this.passwordLabelSignUp.Location = new System.Drawing.Point(481, 163);
+            this.passwordLabelSignUp.Location = new System.Drawing.Point(495, 149);
             this.passwordLabelSignUp.Name = "passwordLabelSignUp";
             this.passwordLabelSignUp.Size = new System.Drawing.Size(53, 13);
             this.passwordLabelSignUp.TabIndex = 11;
@@ -159,7 +161,7 @@
             // 
             // passwordTxtBoxSignUp
             // 
-            this.passwordTxtBoxSignUp.Location = new System.Drawing.Point(540, 160);
+            this.passwordTxtBoxSignUp.Location = new System.Drawing.Point(554, 146);
             this.passwordTxtBoxSignUp.MaxLength = 12;
             this.passwordTxtBoxSignUp.Name = "passwordTxtBoxSignUp";
             this.passwordTxtBoxSignUp.Size = new System.Drawing.Size(148, 20);
@@ -168,7 +170,7 @@
             // emailLabelSignUp
             // 
             this.emailLabelSignUp.AutoSize = true;
-            this.emailLabelSignUp.Location = new System.Drawing.Point(502, 137);
+            this.emailLabelSignUp.Location = new System.Drawing.Point(516, 123);
             this.emailLabelSignUp.Name = "emailLabelSignUp";
             this.emailLabelSignUp.Size = new System.Drawing.Size(32, 13);
             this.emailLabelSignUp.TabIndex = 9;
@@ -176,7 +178,7 @@
             // 
             // emailTxtBoxSignUp
             // 
-            this.emailTxtBoxSignUp.Location = new System.Drawing.Point(540, 134);
+            this.emailTxtBoxSignUp.Location = new System.Drawing.Point(554, 120);
             this.emailTxtBoxSignUp.Name = "emailTxtBoxSignUp";
             this.emailTxtBoxSignUp.Size = new System.Drawing.Size(148, 20);
             this.emailTxtBoxSignUp.TabIndex = 8;
@@ -185,7 +187,7 @@
             // dobLabelSignUp
             // 
             this.dobLabelSignUp.AutoSize = true;
-            this.dobLabelSignUp.Location = new System.Drawing.Point(468, 189);
+            this.dobLabelSignUp.Location = new System.Drawing.Point(482, 175);
             this.dobLabelSignUp.Name = "dobLabelSignUp";
             this.dobLabelSignUp.Size = new System.Drawing.Size(66, 13);
             this.dobLabelSignUp.TabIndex = 13;
@@ -198,7 +200,7 @@
             this.dobPickerSignUp.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
             this.dobPickerSignUp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dobPickerSignUp.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dobPickerSignUp.Location = new System.Drawing.Point(540, 186);
+            this.dobPickerSignUp.Location = new System.Drawing.Point(554, 172);
             this.dobPickerSignUp.Name = "dobPickerSignUp";
             this.dobPickerSignUp.Size = new System.Drawing.Size(148, 20);
             this.dobPickerSignUp.TabIndex = 14;
@@ -207,7 +209,7 @@
             // lblSignupName
             // 
             this.lblSignupName.AutoSize = true;
-            this.lblSignupName.Location = new System.Drawing.Point(502, 111);
+            this.lblSignupName.Location = new System.Drawing.Point(516, 71);
             this.lblSignupName.Name = "lblSignupName";
             this.lblSignupName.Size = new System.Drawing.Size(35, 13);
             this.lblSignupName.TabIndex = 16;
@@ -215,18 +217,37 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(540, 108);
+            this.txtName.Location = new System.Drawing.Point(554, 68);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(148, 20);
             this.txtName.TabIndex = 15;
             this.txtName.Text = "Enter Name";
+            // 
+            // txtSurname
+            // 
+            this.txtSurname.Location = new System.Drawing.Point(554, 94);
+            this.txtSurname.Name = "txtSurname";
+            this.txtSurname.Size = new System.Drawing.Size(148, 20);
+            this.txtSurname.TabIndex = 15;
+            this.txtSurname.Text = "Enter Surname";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(502, 97);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Surname";
             // 
             // frmRegisterMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblSignupName);
+            this.Controls.Add(this.txtSurname);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.dobPickerSignUp);
             this.Controls.Add(this.dobLabelSignUp);
@@ -273,5 +294,7 @@
         private System.Windows.Forms.DateTimePicker dobPickerSignUp;
         private System.Windows.Forms.Label lblSignupName;
         private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtSurname;
+        private System.Windows.Forms.Label label1;
     }
 }

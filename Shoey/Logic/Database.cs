@@ -31,7 +31,7 @@ namespace Shoey
         {
             using (OracleConnection conn = new OracleConnection (connectionString)) 
             {
-                string query = "SELECT * FROM PRODUCTS";
+                string query = "SELECT * FROM SHOES";
 
                 OracleDataAdapter da = new OracleDataAdapter(query, conn);
                 DataTable dt = new DataTable();
@@ -47,7 +47,7 @@ namespace Shoey
             {
                 conn.Open();
 
-                string query = @"UPDATE PRODUCTS 
+                string query = @"UPDATE SHOES 
                                SET PRICE = :price,
                                     QTY = QTY + :qty, 
                                     COLOUR = :colour 
@@ -72,7 +72,7 @@ namespace Shoey
             {
                 conn.Open();
 
-                string query = "SELECT * FROM PRODUCTS WHERE PRODUCTID = :id";
+                string query = "SELECT * FROM SHOES WHERE PRODUCTID = :id";
 
                 OracleCommand cmd = new OracleCommand(query, conn);
                 cmd.Parameters.Add(":id", productID);
@@ -92,7 +92,7 @@ namespace Shoey
             {
                 conn.Open();
 
-                string query = "DELETE FROM PRODUCTS WHERE PRODUCTID = :id";
+                string query = "DELETE FROM SHOES WHERE PRODUCTID = :id";
 
                 OracleCommand cmd = new OracleCommand(query, conn);
                 cmd.Parameters.Add(":id", productID);
@@ -107,7 +107,7 @@ namespace Shoey
             {
                 conn.Open();
 
-                string query = @"INSERT INTO PRODUCTS (PRODUCTID, NAME, COLOUR, MANUFACTURER, QTY, PRICE)
+                string query = @"INSERT INTO SHOES (PRODUCTID, NAME, COLOUR, MANUFACTURER, QTY, PRICE)
                                 VALUES (PRODUCT_SEQ.NEXTVAL, :name, :colour, :manufacturer, :qty, :price)";
 
                 /* 
@@ -130,18 +130,19 @@ namespace Shoey
             }
         }
 
-        public void CreateNewCust(string name, string email, string password) //find how to add dates
+        public void CreateNewCust(string name, string surname, string email, string password) //find how to add dates
         {
             using(OracleConnection conn = new OracleConnection(connectionString))
             {
                 conn.Open();
 
-                string query = @"INSERT INTO CUSTOMERS(CUSTOMERID, NAME, EMAIL, PASSWORD_HASH)
-                                 VALUES(CUSTOMER_SEQ.NEXTVAL, :name, :email, :password)";
+                string query = @"INSERT INTO CUSTOMERS(CUSTOMERID, FORENAME, SURNAME, EMAIL, PASSWORD_HASH, STATUSID)
+                                 VALUES(CUSTOMER_SEQ.NEXTVAL, :name, :surname, :email, :password, 1)";
 
                 OracleCommand cmd = new OracleCommand(query, conn);
 
                 cmd.Parameters.Add(":name", name);
+                cmd.Parameters.Add(":name", surname);
                 cmd.Parameters.Add(":email", email);
                 cmd.Parameters.Add(":password", password);
 
@@ -175,10 +176,6 @@ namespace Shoey
                 }
             }
         }
-
-        /*
-         CREATE A LOGIN, MAYBE THROUGH EMAIL?
-         */
 
         // had to make int to return a value, in this case to pass through sales 
         public int CreateOrder(int productID, int qty)

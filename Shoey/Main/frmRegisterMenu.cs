@@ -63,9 +63,37 @@ namespace Shoey
                 return;
             }
 
-            if(!validator.IsValidEmail(emailTxtBoxSignUp.Text))
+
+            // FINSIH THIS i.e add error codes
+            if(validator.IsValidEmail(emailTxtBoxSignUp.Text) != 0)
             {
-                MessageBox.Show("Please enter a valid Email address.");
+                if(validator.IsValidEmail(emailTxtBoxSignUp.Text) == 1)
+                {
+                    MessageBox.Show("Cannot have Email empty");
+                    return;
+                }
+                if (validator.IsValidEmail(emailTxtBoxSignUp.Text) == 2)
+                {
+                    MessageBox.Show("Email is invalid length");
+                    return;
+                }
+                if (validator.IsValidEmail(emailTxtBoxSignUp.Text) == 3)
+                {
+                    MessageBox.Show("Invalid email domain");
+                    return;
+                }
+                if (validator.IsValidEmail(emailTxtBoxSignUp.Text) == 4)
+                {
+                    MessageBox.Show("No @ sign");
+                    return;
+                }
+                
+
+            }
+
+            if(validator.IsValidPassword(passwordTxtBoxSignUp.Text) != 0)
+            {
+                MessageBox.Show("Please enter a valid Password.");
                 return;
             }
 
@@ -78,6 +106,7 @@ namespace Shoey
 
                 db.CreateNewCust(
                     txtName.Text,
+                    txtSurname.Text,
                     emailTxtBoxSignUp.Text,
                     hashedPassword
                     );

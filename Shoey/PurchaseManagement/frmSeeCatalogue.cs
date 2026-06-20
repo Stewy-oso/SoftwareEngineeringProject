@@ -103,6 +103,25 @@ namespace Shoey
             });
 
             MessageBox.Show("Item added to Basket!");
+
+            UpdateBasketLabel();
+        }
+
+        private void btnGoToBasket_Click(object sender, EventArgs e)
+        {
+            frmSeeBasket basket = new frmSeeBasket();
+            basket.Show();
+        }
+
+        public void UpdateBasketLabel()
+        {
+            int itemCount = CartManager.Basket.Sum(item => item.Quantity);
+
+            decimal total = CartManager.Basket.Sum(item => item.Price * item.Quantity);
+
+            lblBasketTotalCost.Text = "€" + total.ToString();
+            lblTotalItems.Text = itemCount.ToString();
+
         }
     }
 }

@@ -38,6 +38,11 @@
             this.ListBoxLbl = new System.Windows.Forms.Label();
             this.btnAddToBasket = new System.Windows.Forms.Button();
             this.dgvCatalogue = new System.Windows.Forms.DataGridView();
+            this.lblBasketTotal = new System.Windows.Forms.Label();
+            this.lblBasketTotalCost = new System.Windows.Forms.Label();
+            this.btnGoToBasket = new System.Windows.Forms.Button();
+            this.lblTotalBasketItems = new System.Windows.Forms.Label();
+            this.lblTotalItems = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.catalogueBG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCatalogue)).BeginInit();
@@ -129,11 +134,62 @@
             this.dgvCatalogue.Size = new System.Drawing.Size(316, 223);
             this.dgvCatalogue.TabIndex = 5;
             // 
+            // lblBasketTotal
+            // 
+            this.lblBasketTotal.AutoSize = true;
+            this.lblBasketTotal.Location = new System.Drawing.Point(313, 351);
+            this.lblBasketTotal.Name = "lblBasketTotal";
+            this.lblBasketTotal.Size = new System.Drawing.Size(66, 13);
+            this.lblBasketTotal.TabIndex = 6;
+            this.lblBasketTotal.Text = "Basket total:";
+            // 
+            // lblBasketTotalCost
+            // 
+            this.lblBasketTotalCost.AutoSize = true;
+            this.lblBasketTotalCost.Location = new System.Drawing.Point(425, 351);
+            this.lblBasketTotalCost.Name = "lblBasketTotalCost";
+            this.lblBasketTotalCost.Size = new System.Drawing.Size(34, 13);
+            this.lblBasketTotalCost.TabIndex = 7;
+            this.lblBasketTotalCost.Text = "€0.00";
+            // 
+            // btnGoToBasket
+            // 
+            this.btnGoToBasket.Location = new System.Drawing.Point(316, 393);
+            this.btnGoToBasket.Name = "btnGoToBasket";
+            this.btnGoToBasket.Size = new System.Drawing.Size(143, 45);
+            this.btnGoToBasket.TabIndex = 8;
+            this.btnGoToBasket.Text = "Go To Basket";
+            this.btnGoToBasket.UseVisualStyleBackColor = true;
+            this.btnGoToBasket.Click += new System.EventHandler(this.btnGoToBasket_Click);
+            // 
+            // lblTotalBasketItems
+            // 
+            this.lblTotalBasketItems.AutoSize = true;
+            this.lblTotalBasketItems.Location = new System.Drawing.Point(286, 377);
+            this.lblTotalBasketItems.Name = "lblTotalBasketItems";
+            this.lblTotalBasketItems.Size = new System.Drawing.Size(109, 13);
+            this.lblTotalBasketItems.TabIndex = 9;
+            this.lblTotalBasketItems.Text = "Total Items in Basket:";
+            // 
+            // lblTotalItems
+            // 
+            this.lblTotalItems.AutoSize = true;
+            this.lblTotalItems.Location = new System.Drawing.Point(425, 377);
+            this.lblTotalItems.Name = "lblTotalItems";
+            this.lblTotalItems.Size = new System.Drawing.Size(41, 13);
+            this.lblTotalItems.TabIndex = 10;
+            this.lblTotalItems.Text = "0 Items";
+            // 
             // frmSeeCatalogue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblTotalItems);
+            this.Controls.Add(this.lblTotalBasketItems);
+            this.Controls.Add(this.btnGoToBasket);
+            this.Controls.Add(this.lblBasketTotalCost);
+            this.Controls.Add(this.lblBasketTotal);
             this.Controls.Add(this.dgvCatalogue);
             this.Controls.Add(this.btnAddToBasket);
             this.Controls.Add(this.ListBoxLbl);
@@ -164,5 +220,10 @@
         private System.Windows.Forms.Label ListBoxLbl;
         private System.Windows.Forms.Button btnAddToBasket;
         private System.Windows.Forms.DataGridView dgvCatalogue;
+        private System.Windows.Forms.Label lblBasketTotal;
+        private System.Windows.Forms.Label lblBasketTotalCost;
+        private System.Windows.Forms.Button btnGoToBasket;
+        private System.Windows.Forms.Label lblTotalBasketItems;
+        private System.Windows.Forms.Label lblTotalItems;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -10,17 +11,71 @@ namespace Shoey
 {
     internal class validator
     {
-        public static bool IsValidEmail(string email)
+        public static int IsValidEmail(string email)
         {
-            try
+            const int Valid = 0;
+            const int Empty = 1;
+            const int InvalidLen = 2;
+            const int InvalidDomain = 3;
+            const int NoAtSign = 4;
+
+            string[] allowedDomains =
+                {
+                    "@gmail.com",
+                    "@outlook.com",
+                    "@yahoo.com",
+                    "@ittralee.ie",
+                    "@mymtu.ie",
+                    "@mtu.ie",
+                };
+
+            foreach (string domain in allowedDomains)
             {
-                var addr = new MailAddress(email);
-                return addr.Address == email;
+                if (email.ToLower().EndsWith(domain))
+                {
+                    return Valid;
+                }
+                else return InvalidDomain;
             }
-            catch
+           
+
+            if(string.IsNullOrWhiteSpace(email))
             {
-                return false;
+                return Empty;
             }
+
+            if(email.Length > 50)
+            {
+                return InvalidLen;
+            }
+
+            if (!email.Contains("@"))
+            {
+                return NoAtSign;
+            }
+            else return Valid;
+            
+        }
+
+        public static int IsValidPassword(string password)
+        {
+            const int Valid = 0;
+            const int Empty = 1;
+            const int NoLower = 2;
+            const int NoUpper = 3;
+            const int noDigit = 4;
+            const int NoSpecial = 5;
+            const int InvalidLen = 6;
+
+            if (password.Length < 8) return InvalidLen;
+            if (!password.Any(char.IsUpper)) return NoUpper;
+            if (!password.Any(char.IsLower)) return NoLower;
+            if (!password.Any(char.IsDigit)) return noDigit;
+            if (!password.Any(char.IsPunctuation)) return NoSpecial;
+            if (string.IsNullOrEmpty(password)) return Empty;
+
+            return Valid;
+
         }
 
         public static int IsValidPhone(string phone)

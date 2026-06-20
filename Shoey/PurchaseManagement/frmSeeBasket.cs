@@ -55,7 +55,7 @@ namespace Shoey
 
             this.Close();
         }
-            private void LoadBasket()
+        private void LoadBasket()
         {
             dgvBasket.AutoGenerateColumns = true;
             dgvBasket.DataSource = null;
@@ -85,6 +85,22 @@ namespace Shoey
         {
             string email = txtEmail.Text;
             string password = txtPassword.Text;
+
+            validator.IsValidEmail(email);
+
+            int Validp = validator.IsValidPassword(password);
+            if(Validp != 0)
+            {
+                if (Validp == 1) MessageBox.Show("Password Cannot Be Empty!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (Validp == 2) MessageBox.Show("Need to have a lowercase character!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (Validp == 3) MessageBox.Show("Need to have a uppercase character!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (Validp == 4) MessageBox.Show("Need to have a digit!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (Validp == 5) MessageBox.Show("Need to hacve a symbol! (i.e $,%,^, etc)", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (Validp == 6) MessageBox.Show("Password must be longer than 8 characters!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+            
             string hashedPassword = passwordHashing.HashPassword(password);
 
             Database db = new Database();
