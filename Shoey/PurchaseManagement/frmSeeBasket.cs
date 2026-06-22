@@ -60,6 +60,14 @@ namespace Shoey
             dgvBasket.AutoGenerateColumns = true;
             dgvBasket.DataSource = null;
             dgvBasket.DataSource = CartManager.Basket;
+            dgvBasket.Columns["ProductID"].Visible = false;
+            dgvBasket.DefaultCellStyle.NullValue = "N/A";
+
+            dgvBasket.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dgvBasket.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dgvBasket.Columns["Price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dgvBasket.Columns["Subtotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             UpdateTotal();
         }
@@ -77,7 +85,7 @@ namespace Shoey
         private void UpdateTotal()
         {
             decimal total = CartManager.Basket.Sum(x => x.Subtotal);
-            lblTotalAmt.Text = total.ToString("0.00");
+            lblTotalAmt.Text = total.ToString("€0.00");
         }
 
         // A really broken checkout ahha
@@ -89,6 +97,7 @@ namespace Shoey
             validator.IsValidEmail(email);
 
             int Validp = validator.IsValidPassword(password);
+
             if(Validp != 0)
             {
                 if (Validp == 1) MessageBox.Show("Password Cannot Be Empty!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -109,15 +118,32 @@ namespace Shoey
 
             if (customerID != -1)
             {
+
+                if(CartManager.Basket.Count == 0)
+                {
+                    MessageBox.Show("Basket is empty!!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                
                 int qty = CartManager.Basket.Sum(x => x.Quantity);
                 decimal total = CartManager.Basket.Sum(x => x.Subtotal);
-                int productID = CartManager.Basket.First().ProductID;
+                int productID = CartManager.Basket.FirstOrDefault().ProductID;
 
-                db.CreateSale(productID, qty, customerID, total);
+                foreach (var item in CartManager.Basket)
+                {
+                    db.CreateSale(item.ProductID, item.Quantity, customerID, item.Subtotal);
+                }
+
+                // CHECKPOINT
+                
+
+                
+
+                CartManager.Clear();
             }
             else
             {
-                MessageBox.Show("Invalid login");
+                MessageBox.Show("User doesn't exist! \nCheck email?");
             }
         }
 
@@ -128,12 +154,7 @@ namespace Shoey
 
             int productId = Convert.ToInt32(dgvBasket.CurrentRow.Cells["ProductID"].Value);
 
-            var item = CartManager.Basket.FirstOrDefault(x => x.ProductID == productId);
-
-            if (item != null)
-            {
-                CartManager.Basket.Remove(item);
-            }
+            CartManager.RemoveFromBasket(productId);
 
             LoadBasket();
         }

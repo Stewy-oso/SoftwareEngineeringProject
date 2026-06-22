@@ -75,14 +75,21 @@ namespace Shoey
             dgvCatalogue.Columns["QTY"].HeaderText = "Quantity";
             dgvCatalogue.Columns["PRICE"].HeaderText = "Price";
 
-            //Hide columns
             dgvCatalogue.Columns["PRODUCTID"].Visible = false;
-            dgvCatalogue.Columns["COLOUR"].Visible = false;
-            dgvCatalogue.Columns["MANUFACTURER"].Visible = false;
 
-            //Force sizing all columns & cells
-            //dgvSaleItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            //dgvSaleItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvCatalogue.DefaultCellStyle.NullValue = "N/A";
+
+            dgvCatalogue.Columns["PRICE"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+            dgvCatalogue.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dgvCatalogue.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            // Indexing
+
+            dgvCatalogue.Columns["Name"].DisplayIndex = 0;
+            dgvCatalogue.Columns["Price"].DisplayIndex = 1;
+            dgvCatalogue.Columns["QTY"].DisplayIndex = 2;
+            //dgvCatalogue.Columns["Type"].DisplayIndex = 4;
         }
 
         private void btnBuy_Click(object sender, EventArgs e)

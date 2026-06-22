@@ -29,11 +29,13 @@ namespace Shoey.Logic
         public static void AddItem(CartItem item)
         {
             var exisiting = Basket.FirstOrDefault(x => x.ProductID == item.ProductID);
+            int productID = item.ProductID;
 
-            if(exisiting != null)
+            if (exisiting != null)
             {
                 exisiting.Quantity += item.Quantity;
             }
+
             else
             {
                 Basket.Add(item);
@@ -43,6 +45,26 @@ namespace Shoey.Logic
         public static void Clear()
         {
             Basket.Clear();
+        }
+
+        public static void RemoveFromBasket(int productId)
+        {
+            var item = Basket.FirstOrDefault(x => x.ProductID == productId);
+
+            if (item == null)
+            {
+                return;
+            }
+
+            if(item.Quantity > 1)
+            {
+                item.Quantity -= 1;
+            }
+
+            else
+            {
+                Basket.Remove(item);
+            }
         }
     }
 }

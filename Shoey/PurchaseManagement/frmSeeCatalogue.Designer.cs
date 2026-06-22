@@ -127,11 +127,11 @@
             this.dgvCatalogue.AllowUserToAddRows = false;
             this.dgvCatalogue.AllowUserToDeleteRows = false;
             this.dgvCatalogue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCatalogue.Location = new System.Drawing.Point(237, 60);
+            this.dgvCatalogue.Location = new System.Drawing.Point(154, 60);
             this.dgvCatalogue.Name = "dgvCatalogue";
             this.dgvCatalogue.ReadOnly = true;
             this.dgvCatalogue.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvCatalogue.Size = new System.Drawing.Size(316, 223);
+            this.dgvCatalogue.Size = new System.Drawing.Size(492, 223);
             this.dgvCatalogue.TabIndex = 5;
             // 
             // lblBasketTotal

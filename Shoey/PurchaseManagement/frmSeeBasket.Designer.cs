@@ -46,9 +46,13 @@
             this.lblPass = new System.Windows.Forms.Label();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblPanel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.basketBG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBasket)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -109,7 +113,7 @@
             // basketLbl
             // 
             this.basketLbl.AutoSize = true;
-            this.basketLbl.Location = new System.Drawing.Point(378, 56);
+            this.basketLbl.Location = new System.Drawing.Point(392, 56);
             this.basketLbl.Name = "basketLbl";
             this.basketLbl.Size = new System.Drawing.Size(40, 13);
             this.basketLbl.TabIndex = 3;
@@ -121,16 +125,16 @@
             this.dgvBasket.AllowUserToAddRows = false;
             this.dgvBasket.AllowUserToDeleteRows = false;
             this.dgvBasket.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBasket.Location = new System.Drawing.Point(320, 72);
+            this.dgvBasket.Location = new System.Drawing.Point(151, 74);
             this.dgvBasket.Name = "dgvBasket";
             this.dgvBasket.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvBasket.Size = new System.Drawing.Size(343, 166);
+            this.dgvBasket.Size = new System.Drawing.Size(515, 166);
             this.dgvBasket.TabIndex = 4;
             // 
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(460, 241);
+            this.lblTotal.Location = new System.Drawing.Point(372, 243);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(34, 13);
             this.lblTotal.TabIndex = 5;
@@ -139,7 +143,7 @@
             // lblTotalAmt
             // 
             this.lblTotalAmt.AutoSize = true;
-            this.lblTotalAmt.Location = new System.Drawing.Point(500, 241);
+            this.lblTotalAmt.Location = new System.Drawing.Point(412, 243);
             this.lblTotalAmt.Name = "lblTotalAmt";
             this.lblTotalAmt.Size = new System.Drawing.Size(34, 13);
             this.lblTotalAmt.TabIndex = 6;
@@ -147,7 +151,7 @@
             // 
             // btnCheckout
             // 
-            this.btnCheckout.Location = new System.Drawing.Point(558, 259);
+            this.btnCheckout.Location = new System.Drawing.Point(454, 378);
             this.btnCheckout.Name = "btnCheckout";
             this.btnCheckout.Size = new System.Drawing.Size(105, 60);
             this.btnCheckout.TabIndex = 7;
@@ -157,14 +161,14 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(107, 72);
+            this.txtEmail.Location = new System.Drawing.Point(84, 24);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(179, 20);
             this.txtEmail.TabIndex = 8;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(107, 98);
+            this.txtPassword.Location = new System.Drawing.Point(84, 50);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(179, 20);
@@ -173,7 +177,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(56, 75);
+            this.lblEmail.Location = new System.Drawing.Point(33, 27);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(35, 13);
             this.lblEmail.TabIndex = 10;
@@ -182,7 +186,7 @@
             // lblPass
             // 
             this.lblPass.AutoSize = true;
-            this.lblPass.Location = new System.Drawing.Point(45, 101);
+            this.lblPass.Location = new System.Drawing.Point(22, 53);
             this.lblPass.Name = "lblPass";
             this.lblPass.Size = new System.Drawing.Size(56, 13);
             this.lblPass.TabIndex = 11;
@@ -190,7 +194,7 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(434, 259);
+            this.btnRemove.Location = new System.Drawing.Point(330, 378);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(118, 60);
             this.btnRemove.TabIndex = 12;
@@ -200,7 +204,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(320, 259);
+            this.btnClear.Location = new System.Drawing.Point(216, 378);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(108, 60);
             this.btnClear.TabIndex = 13;
@@ -208,17 +212,46 @@
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.TabIndex = 14;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lblPanel);
+            this.panel1.Controls.Add(this.lblEmail);
+            this.panel1.Controls.Add(this.txtEmail);
+            this.panel1.Controls.Add(this.txtPassword);
+            this.panel1.Controls.Add(this.lblPass);
+            this.panel1.Location = new System.Drawing.Point(246, 259);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(302, 100);
+            this.panel1.TabIndex = 15;
+            // 
+            // lblPanel
+            // 
+            this.lblPanel.AutoSize = true;
+            this.lblPanel.Location = new System.Drawing.Point(3, 0);
+            this.lblPanel.Name = "lblPanel";
+            this.lblPanel.Size = new System.Drawing.Size(172, 13);
+            this.lblPanel.TabIndex = 16;
+            this.lblPanel.Text = "Please login to complete purchase:";
+            // 
             // frmSeeBasket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnRemove);
-            this.Controls.Add(this.lblPass);
-            this.Controls.Add(this.lblEmail);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.btnCheckout);
             this.Controls.Add(this.lblTotalAmt);
             this.Controls.Add(this.lblTotal);
@@ -235,6 +268,8 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.basketBG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBasket)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -259,5 +294,8 @@
         private System.Windows.Forms.Label lblPass;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblPanel;
     }
 }

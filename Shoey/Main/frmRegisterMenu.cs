@@ -126,20 +126,39 @@ namespace Shoey
 
         private void signInBtn_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(emailTxtBoxSignIn.Text))
-            {
-                MessageBox.Show("Email cannot be empty!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
 
-            if (string.IsNullOrEmpty(passwordTxtBoxSignIn.Text))
-            {
-                MessageBox.Show("Password cannot be empty!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            string email = emailTxtBoxSignIn.Text;
             string password = passwordTxtBoxSignIn.Text;
+            string email = emailTxtBoxSignIn.Text;
+
+            int validE = validator.IsValidEmail(email);
+            if (validE != 0)
+            {
+                if (validE == 1) MessageBox.Show("Email Cannot Be Empty!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (validE == 2) MessageBox.Show("Email has invalid length!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                if (validE == 3) MessageBox.Show("Email has an Invalid domain! \nValid domains are: @gmail.com," +
+                    "\n@outlook.com,\n@yahoo.com,\n@ittralee.ie,\n@mymtu.ie,\n@mtu.ie", 
+                    "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if (validE == 4) MessageBox.Show("Email is missing an @ sign!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            int Validp = validator.IsValidPassword(password);
+            if (Validp != 0)
+            {
+                if (Validp == 1) MessageBox.Show("Password Cannot Be Empty!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (Validp == 2) MessageBox.Show("Need to have a lowercase character!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (Validp == 3) MessageBox.Show("Need to have a uppercase character!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (Validp == 4) MessageBox.Show("Need to have a digit!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (Validp == 5) MessageBox.Show("Need to hacve a symbol! (i.e $,%,^, etc)", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (Validp == 6) MessageBox.Show("Password must be longer than 8 characters!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
+            }
+
+            
             string hash = passwordHashing.HashPassword(password);
 
             Database db = new Database();
