@@ -60,14 +60,33 @@ namespace Shoey
             dgvBasket.AutoGenerateColumns = true;
             dgvBasket.DataSource = null;
             dgvBasket.DataSource = CartManager.Basket;
-            dgvBasket.Columns["ProductID"].Visible = false;
+
+            // Error proofing (save me)
+            if(dgvBasket.Columns.Count > 0)
+            {
+                if (dgvBasket.Columns.Contains("ProductID"))
+                {
+                    dgvBasket.Columns["ProductID"].Visible = false;
+                }
+
+                if(dgvBasket.Columns.Contains("Price"))
+                {
+                    dgvBasket.Columns["Price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                }
+
+                if(dgvBasket.Columns.Contains("Subtotal"))
+                {
+                    dgvBasket.Columns["Subtotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                }
+                
+
+            }
+            
             dgvBasket.DefaultCellStyle.NullValue = "N/A";
 
             dgvBasket.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dgvBasket.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            dgvBasket.Columns["Price"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dgvBasket.Columns["Subtotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             UpdateTotal();
         }
@@ -124,22 +143,24 @@ namespace Shoey
                     MessageBox.Show("Basket is empty!!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                
-                int qty = CartManager.Basket.Sum(x => x.Quantity);
+               
                 decimal total = CartManager.Basket.Sum(x => x.Subtotal);
-                int productID = CartManager.Basket.FirstOrDefault().ProductID;
+
+                int saleID = db.CreateSale(customerID, total);
 
                 foreach (var item in CartManager.Basket)
                 {
-                    db.CreateSale(item.ProductID, item.Quantity, customerID, item.Subtotal);
+                    db.CreateSales_Items(
+                        saleID,
+                        item.ProductID,
+                        item.Quantity
+                        );
                 }
 
-                // CHECKPOINT
-                
-
-                
-
                 CartManager.Clear();
+                LoadBasket();
+
+                MessageBox.Show("Purchase completed successfully! \nSale ID: " + saleID, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {

@@ -177,24 +177,27 @@ namespace Shoey
             }
         }
 
-        // had to make int to return a value, in this case to pass through sales 
-        public int CreateOrder(int productID, int qty)
+        public void CreateSales_Items(int saleID, int productID, int qty)
         {
             using (OracleConnection conn = new OracleConnection(connectionString))
             {
                 conn.Open();
 
-                string query1 = @"INSERT INTO ORDERS (ORDERID, PRODUCTID, QUANTITY)
-                                 VALUES (ORDERS_SEQ.NEXTVAL, :p_id, :p_qty)";
+                string query1 = @"
+                    INSERT INTO SALES_ITEMS
+                    (SALEITEMID, SALEID, PRODUCTID, QUANTITY)
+                    VALUES
+                    (SALES_ITEMS_SEQ.NEXTVAL, :saleID, :p_id, :p_qty)";
 
                 OracleCommand cmd = new OracleCommand(query1, conn);
                 
+                cmd.Parameters.Add(":saleID", saleID);
                 cmd.Parameters.Add(":p_id", productID);
                 cmd.Parameters.Add(":p_qty", qty);
 
                 cmd.ExecuteNonQuery();  
 
-                string query2 = "SELECT ORDERS_SEQ.CURRVAL FROM DUAL";
+                //string query2 = "SELECT ORDERS_SEQ.CURRVAL FROM DUAL";
 
                 /* 
                  Title:  SQL Language Reference
@@ -204,32 +207,43 @@ namespace Shoey
                  Code: ORDERS_SEQ.CURRVAL
                  */
 
-                OracleCommand cmd1 = new OracleCommand(query2, conn);
+                //OracleCommand cmd1 = new OracleCommand(query2, conn);
                 
-                return Convert.ToInt32(cmd1.ExecuteScalar());
+                //return Convert.ToInt32(cmd1.ExecuteScalar());
                 
             }
         }
 
-        public void CreateSale(int ProductID, int qty, int customerId, decimal total)
+        public int CreateSale(int customerID, decimal total)
         {
             using (OracleConnection conn = new OracleConnection(connectionString))
             {
                 conn.Open();
 
-                int orderId = CreateOrder(ProductID, qty);
-
-                string query = @"INSERT INTO SALES (SALEID, SALES_DATE, TOTAL, ORDERID, CUSTOMERID)
-                                 VALUES (SALES_SEQ.NEXTVAL, SYSDATE, :total, :orderId, :customerId)";
+                string query = @"INSERT INTO SALES (SALEID, SALES_DATE, TOTAL, CUSTOMERID)
+                                 VALUES (SALES_SEQ.NEXTVAL, SYSDATE, :total, :customerId)";
 
                 OracleCommand cmd = new OracleCommand(query, conn);
                 
                 cmd.Parameters.Add(":total", total);
-                cmd.Parameters.Add(":orderId", orderId);
-                cmd.Parameters.Add(":customerId", customerId);
+                cmd.Parameters.Add(":customerId", customerID);
 
                 cmd.ExecuteNonQuery();
-                
+
+                string query2 = "SELECT SALES_SEQ.CURRVAL FROM DUAL";
+
+                /* 
+                 Title:  SQL Language Reference
+                 Author: oracle.com
+                 Date: November 2025
+                 Website: https://docs.oracle.com/en/database/oracle//oracle-database/19/sqlrf/Sequence-Pseudocolumns.html
+                 Code: ORDERS_SEQ.CURRVAL
+                 */
+
+                OracleCommand cmd2 = new OracleCommand(query2, conn);
+
+                return Convert.ToInt32(cmd2.ExecuteScalar());
+
             }
         }
 
