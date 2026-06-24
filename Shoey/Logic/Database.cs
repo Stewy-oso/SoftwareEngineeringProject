@@ -265,32 +265,68 @@ namespace Shoey
             }
         }
 
-        public int FindSaleTotal()
+        public decimal FindSaleTotal()
         {
             using (OracleConnection conn = new OracleConnection(connectionString))
             {
                 conn.Open();
 
-                string query = "SELECT TOTAL FROM SALES";
+                string query = "SELECT SUM(TOTAL) FROM SALES";
 
                 OracleCommand cmd = new OracleCommand(query, conn);
 
-                return Convert.ToInt32(cmd.ExecuteScalar());
+                return Convert.ToDecimal(cmd.ExecuteScalar());
             }
         }
 
-        public String ListSales()
+        public DataTable ListSales()
         {
+            DataTable dt = new DataTable();
+
             using (OracleConnection conn = new OracleConnection(connectionString))
             {
                 conn.Open();
 
                 string query = "SELECT * FROM SALES";
 
-                OracleCommand cmd = new OracleCommand(query, conn);
-
-                return Convert.ToString(cmd.ExecuteScalar());
+                OracleDataAdapter da = new OracleDataAdapter(query, conn);
+                da.Fill(dt);
             }
+
+            return dt;
+
         }
-    }
-}
+
+        public DataTable GetTopShoes()
+        {
+            DataTable dt = new DataTable();
+
+            using (OracleConnection conn = new OracleConnection(connectionString))
+            {
+                conn.Open();
+
+                string query = @"SELECT p.name, SUM(S.QUANTITY) AS TIMES_SOLD
+                                    FROM SALES_ITEMS S
+                                    JOIN SHOES P
+                                    ON S.PRODUCTID = P.PRODUCTID
+                                    GROUP BY P.NAME
+                                    ORDER BY TIMES_SOLD DESC
+                                    FETCH FIRST 5 ROWS ONLY";
+
+                /* 
+                 Title:  How do I limit the number of rows returned by an Oracle query after ordering? (Answer1)
+                 Author: Kosi2801
+                 Date: 22 January, 2009
+                 Website: https://stackoverflow.com/questions/470542/how-do-i-limit-the-number-of-rows-returned-by-an-oracle-query-after-ordering
+                 Code: FETCH FIRST (x) ROWS ONLY;
+                 */
+
+                OracleDataAdapter da = new OracleDataAdapter(query, conn);
+
+                da.Fill(dt);
+
+            }
+
+            return dt;
+        }
+}}

@@ -29,12 +29,17 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSeePopularity));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.exitSys = new System.Windows.Forms.ToolStripMenuItem();
             this.backToMainMnu = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.chrtPopularity = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chrtPopularity)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -53,7 +58,7 @@
             this.exitSys.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.exitSys.BackColor = System.Drawing.Color.Red;
             this.exitSys.Name = "exitSys";
-            this.exitSys.Size = new System.Drawing.Size(37, 20);
+            this.exitSys.Size = new System.Drawing.Size(38, 20);
             this.exitSys.Text = "Exit";
             this.exitSys.Click += new System.EventHandler(this.exitSys_Click);
             // 
@@ -76,20 +81,41 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // chrtPopularity
+            // 
+            this.chrtPopularity.BackColor = System.Drawing.Color.DimGray;
+            this.chrtPopularity.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.VerticalCenter;
+            chartArea1.Name = "ChartArea1";
+            this.chrtPopularity.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chrtPopularity.Legends.Add(legend1);
+            this.chrtPopularity.Location = new System.Drawing.Point(26, 40);
+            this.chrtPopularity.Name = "chrtPopularity";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chrtPopularity.Series.Add(series1);
+            this.chrtPopularity.Size = new System.Drawing.Size(747, 398);
+            this.chrtPopularity.TabIndex = 2;
+            this.chrtPopularity.Text = "Popularity";
+            // 
             // frmSeePopularity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.chrtPopularity);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmSeePopularity";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Popularity";
+            this.Load += new System.EventHandler(this.frmSeePopularity_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chrtPopularity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,5 +127,6 @@
         private System.Windows.Forms.ToolStripMenuItem exitSys;
         private System.Windows.Forms.ToolStripMenuItem backToMainMnu;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chrtPopularity;
     }
 }

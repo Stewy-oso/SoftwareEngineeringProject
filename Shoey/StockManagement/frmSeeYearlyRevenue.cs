@@ -44,7 +44,7 @@ namespace Shoey
                 Database db = new Database();
             
              lblYearlyRevenue.Text =
-                "Total Revenue for" + selectedYear + ": €" + db.FindSaleTotal();
+                "Total Revenue for " + selectedYear + ": €" + db.FindSaleTotal();
             }
             else
             {

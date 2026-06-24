@@ -54,9 +54,11 @@ namespace Shoey
         private void RefreshSalesList()
         {
             Database db = new Database();
-            var soldItems = db.ListSales();
-            listBoxSoldItems.DataSource = null;
-            listBoxSoldItems.DataSource = soldItems;
+            //var soldItems = db.ListSales();
+            //listBoxSoldItems.DataSource = null;
+            //listBoxSoldItems.DataSource = soldItems;
+
+            dgvSales.DataSource = db.ListSales();
         }
 
         private void goToAnalytics_Click(object sender, EventArgs e)

@@ -33,12 +33,12 @@
             this.goToStock = new System.Windows.Forms.ToolStripMenuItem();
             this.exitSys = new System.Windows.Forms.ToolStripMenuItem();
             this.backToMnu = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.listBoxSoldItems = new System.Windows.Forms.ListBox();
-            this.lblTotalRevenue = new System.Windows.Forms.Label();
             this.toToYrlyrevenue = new System.Windows.Forms.ToolStripMenuItem();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.dgvSales = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -66,7 +66,7 @@
             this.exitSys.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.exitSys.BackColor = System.Drawing.Color.Red;
             this.exitSys.Name = "exitSys";
-            this.exitSys.Size = new System.Drawing.Size(37, 20);
+            this.exitSys.Size = new System.Drawing.Size(38, 20);
             this.exitSys.Text = "Exit";
             this.exitSys.Click += new System.EventHandler(this.exitSys_Click);
             // 
@@ -79,6 +79,13 @@
             this.backToMnu.Text = "Back";
             this.backToMnu.Click += new System.EventHandler(this.backToMnu_Click);
             // 
+            // toToYrlyrevenue
+            // 
+            this.toToYrlyrevenue.Name = "toToYrlyrevenue";
+            this.toToYrlyrevenue.Size = new System.Drawing.Size(98, 20);
+            this.toToYrlyrevenue.Text = "Yearly Revenue";
+            this.toToYrlyrevenue.Click += new System.EventHandler(this.goToAnalytics_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
@@ -89,37 +96,23 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // listBoxSoldItems
+            // dgvSales
             // 
-            this.listBoxSoldItems.FormattingEnabled = true;
-            this.listBoxSoldItems.Location = new System.Drawing.Point(296, 45);
-            this.listBoxSoldItems.Name = "listBoxSoldItems";
-            this.listBoxSoldItems.Size = new System.Drawing.Size(248, 225);
-            this.listBoxSoldItems.TabIndex = 2;
-            // 
-            // lblTotalRevenue
-            // 
-            this.lblTotalRevenue.AutoSize = true;
-            this.lblTotalRevenue.Location = new System.Drawing.Point(370, 273);
-            this.lblTotalRevenue.Name = "lblTotalRevenue";
-            this.lblTotalRevenue.Size = new System.Drawing.Size(96, 13);
-            this.lblTotalRevenue.TabIndex = 3;
-            this.lblTotalRevenue.Text = "Total Revenue: €0";
-            // 
-            // toToYrlyrevenue
-            // 
-            this.toToYrlyrevenue.Name = "toToYrlyrevenue";
-            this.toToYrlyrevenue.Size = new System.Drawing.Size(98, 20);
-            this.toToYrlyrevenue.Text = "Yearly Revenue";
-            this.toToYrlyrevenue.Click += new System.EventHandler(this.goToAnalytics_Click);
+            this.dgvSales.AllowUserToAddRows = false;
+            this.dgvSales.AllowUserToDeleteRows = false;
+            this.dgvSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSales.Location = new System.Drawing.Point(173, 42);
+            this.dgvSales.Name = "dgvSales";
+            this.dgvSales.ReadOnly = true;
+            this.dgvSales.Size = new System.Drawing.Size(452, 396);
+            this.dgvSales.TabIndex = 4;
             // 
             // frmTrackSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lblTotalRevenue);
-            this.Controls.Add(this.listBoxSoldItems);
+            this.Controls.Add(this.dgvSales);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -130,6 +123,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,8 +136,7 @@
         private System.Windows.Forms.ToolStripMenuItem exitSys;
         private System.Windows.Forms.ToolStripMenuItem backToMnu;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ListBox listBoxSoldItems;
-        private System.Windows.Forms.Label lblTotalRevenue;
         private System.Windows.Forms.ToolStripMenuItem toToYrlyrevenue;
+        private System.Windows.Forms.DataGridView dgvSales;
     }
 }

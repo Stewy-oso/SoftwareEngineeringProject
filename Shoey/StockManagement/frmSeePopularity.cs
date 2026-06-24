@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace Shoey
 {
@@ -34,5 +35,51 @@ namespace Shoey
                 Application.Exit();
             }
         }
+
+        private void btnSeePop_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void frmSeePopularity_Load(object sender, EventArgs e)
+        {
+            chrtPopularity.Series.Clear();
+
+            Series series = new Series("Most Popular Shoes");
+            series.ChartType = SeriesChartType.Bar;
+
+            chrtPopularity.ChartAreas[0].AxisX.Title = "Shoes";
+            chrtPopularity.ChartAreas[0].AxisY.Title = "Quantity sold";
+
+            Database db = new Database();
+
+            DataTable dt = db.GetTopShoes();
+
+            foreach(DataRow row in dt.Rows)
+            {
+                series.Points.AddXY(row["NAME"].ToString(), Convert.ToInt32(row["TIMES_SOLD"]));
+            }
+
+            chrtPopularity.Series.Add(series);
+        }
+
+        // Code above was based off of:
+        /* 
+         Title:  Chart Class
+         Author: Microsoft
+         Date: UNKNOWN
+         Website: https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.datavisualization.charting.chart?view=netframework-4.8.1
+         Code: chrtPopularity.Series.Clear();
+
+            Series series = new Series("Most Popular Shoes");
+            series.ChartType = SeriesChartType.Bar;
+
+            chrtPopularity.ChartAreas[0].AxisX.Title = "Shoes";
+            chrtPopularity.ChartAreas[0].AxisY.Title = "Quantity sold";
+
+        series.Points.AddXY(row["NAME"].ToString(), Convert.ToInt32(row["TIMES_SOLD"]));
+
+        chrtPopularity.Series.Add(series);
+         */
     }
 }
