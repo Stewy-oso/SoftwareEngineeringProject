@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Oracle.ManagedDataAccess.Client;
+using Shoey.Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Oracle.ManagedDataAccess.Client;
 
 namespace Shoey
 {
@@ -24,6 +25,7 @@ namespace Shoey
 
             if (diagResult == DialogResult.Yes)
             {
+                sessionManager.LogOut();
                 Application.Exit();
             }
         }

@@ -130,20 +130,21 @@ namespace Shoey
             }
         }
 
-        public void CreateNewCust(string name, string surname, string email, string password) //find how to add dates
+        public void CreateNewCust(string name, string surname, string email, string phoneNo, string password) //find how to add dates
         {
             using(OracleConnection conn = new OracleConnection(connectionString))
             {
                 conn.Open();
 
-                string query = @"INSERT INTO CUSTOMERS(CUSTOMERID, FORENAME, SURNAME, EMAIL, PASSWORD_HASH, STATUSID)
-                                 VALUES(CUSTOMER_SEQ.NEXTVAL, :name, :surname, :email, :password, 1)";
+                string query = @"INSERT INTO CUSTOMERS(CUSTOMERID, FIRSTNAME, SURNAME, EMAIL, PHONENO, PASSWORD_HASH, STATUSID)
+                                 VALUES(CUSTOMER_SEQ.NEXTVAL, :name, :surname, :email, :phoneNo, :password, 1)";
 
                 OracleCommand cmd = new OracleCommand(query, conn);
 
                 cmd.Parameters.Add(":name", name);
-                cmd.Parameters.Add(":name", surname);
+                cmd.Parameters.Add(":surname", surname);
                 cmd.Parameters.Add(":email", email);
+                cmd.Parameters.Add(":phoneNo", phoneNo);
                 cmd.Parameters.Add(":password", password);
 
                 cmd.ExecuteNonQuery();

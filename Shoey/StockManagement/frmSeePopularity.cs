@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shoey.Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -32,6 +33,7 @@ namespace Shoey
 
             if (diagResult == DialogResult.Yes)
             {
+                sessionManager.LogOut();
                 Application.Exit();
             }
         }

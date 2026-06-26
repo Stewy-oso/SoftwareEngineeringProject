@@ -107,6 +107,7 @@
     <Compile Include="Logic\Database.cs" />
     <Compile Include="Logic\passwordHashing.cs" />
     <Compile Include="Logic\InventoryItem.cs" />
+    <Compile Include="Logic\sessionManager.cs" />
     <Compile Include="StockManagement\frmAddStock.cs">
       <SubType>Form</SubType>
     </Compile>

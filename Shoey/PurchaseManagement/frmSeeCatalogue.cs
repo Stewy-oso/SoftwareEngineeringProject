@@ -46,6 +46,7 @@ namespace Shoey
 
             if (diagResult == DialogResult.Yes)
             {
+                sessionManager.LogOut();
                 Application.Exit();
             }
         }

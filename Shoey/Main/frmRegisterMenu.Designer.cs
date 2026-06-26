@@ -43,12 +43,12 @@
             this.passwordTxtBoxSignUp = new System.Windows.Forms.TextBox();
             this.emailLabelSignUp = new System.Windows.Forms.Label();
             this.emailTxtBoxSignUp = new System.Windows.Forms.TextBox();
-            this.dobLabelSignUp = new System.Windows.Forms.Label();
-            this.dobPickerSignUp = new System.Windows.Forms.DateTimePicker();
             this.lblSignupName = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtSurname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtBoxPhoneNo = new System.Windows.Forms.TextBox();
+            this.lblPhoneNo = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.registerMenuBG)).BeginInit();
             this.SuspendLayout();
@@ -106,7 +106,7 @@
             // signUpBtn
             // 
             this.signUpBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.signUpBtn.Location = new System.Drawing.Point(567, 198);
+            this.signUpBtn.Location = new System.Drawing.Point(554, 198);
             this.signUpBtn.Name = "signUpBtn";
             this.signUpBtn.Size = new System.Drawing.Size(85, 37);
             this.signUpBtn.TabIndex = 3;
@@ -184,28 +184,6 @@
             this.emailTxtBoxSignUp.TabIndex = 8;
             this.emailTxtBoxSignUp.Text = "Enter Email";
             // 
-            // dobLabelSignUp
-            // 
-            this.dobLabelSignUp.AutoSize = true;
-            this.dobLabelSignUp.Location = new System.Drawing.Point(482, 175);
-            this.dobLabelSignUp.Name = "dobLabelSignUp";
-            this.dobLabelSignUp.Size = new System.Drawing.Size(66, 13);
-            this.dobLabelSignUp.TabIndex = 13;
-            this.dobLabelSignUp.Text = "Date of Birth";
-            this.dobLabelSignUp.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // dobPickerSignUp
-            // 
-            this.dobPickerSignUp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dobPickerSignUp.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
-            this.dobPickerSignUp.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dobPickerSignUp.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dobPickerSignUp.Location = new System.Drawing.Point(554, 172);
-            this.dobPickerSignUp.Name = "dobPickerSignUp";
-            this.dobPickerSignUp.Size = new System.Drawing.Size(148, 20);
-            this.dobPickerSignUp.TabIndex = 14;
-            this.dobPickerSignUp.Value = new System.DateTime(2025, 12, 3, 16, 1, 59, 0);
-            // 
             // lblSignupName
             // 
             this.lblSignupName.AutoSize = true;
@@ -240,17 +218,35 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "Surname";
             // 
+            // txtBoxPhoneNo
+            // 
+            this.txtBoxPhoneNo.Location = new System.Drawing.Point(554, 172);
+            this.txtBoxPhoneNo.MaxLength = 13;
+            this.txtBoxPhoneNo.Name = "txtBoxPhoneNo";
+            this.txtBoxPhoneNo.Size = new System.Drawing.Size(148, 20);
+            this.txtBoxPhoneNo.TabIndex = 15;
+            this.txtBoxPhoneNo.Text = "Enter Phone";
+            // 
+            // lblPhoneNo
+            // 
+            this.lblPhoneNo.AutoSize = true;
+            this.lblPhoneNo.Location = new System.Drawing.Point(510, 175);
+            this.lblPhoneNo.Name = "lblPhoneNo";
+            this.lblPhoneNo.Size = new System.Drawing.Size(38, 13);
+            this.lblPhoneNo.TabIndex = 16;
+            this.lblPhoneNo.Text = "Phone";
+            // 
             // frmRegisterMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblPhoneNo);
             this.Controls.Add(this.lblSignupName);
             this.Controls.Add(this.txtSurname);
+            this.Controls.Add(this.txtBoxPhoneNo);
             this.Controls.Add(this.txtName);
-            this.Controls.Add(this.dobPickerSignUp);
-            this.Controls.Add(this.dobLabelSignUp);
             this.Controls.Add(this.passwordLabelSignUp);
             this.Controls.Add(this.passwordTxtBoxSignUp);
             this.Controls.Add(this.emailLabelSignUp);
@@ -290,11 +286,11 @@
         private System.Windows.Forms.TextBox passwordTxtBoxSignUp;
         private System.Windows.Forms.Label emailLabelSignUp;
         private System.Windows.Forms.TextBox emailTxtBoxSignUp;
-        private System.Windows.Forms.Label dobLabelSignUp;
-        private System.Windows.Forms.DateTimePicker dobPickerSignUp;
         private System.Windows.Forms.Label lblSignupName;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtBoxPhoneNo;
+        private System.Windows.Forms.Label lblPhoneNo;
     }
 }

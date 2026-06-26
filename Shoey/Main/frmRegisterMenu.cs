@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shoey.Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,6 +29,7 @@ namespace Shoey
 
             if (diagResult == DialogResult.Yes)
             {
+                sessionManager.LogOut();
                 Application.Exit();
             }
         }
@@ -57,14 +59,12 @@ namespace Shoey
             
 
             //Validation
-            if(string.IsNullOrEmpty(emailTxtBoxSignUp.Text) || string.IsNullOrEmpty(passwordTxtBoxSignUp.Text) || string.IsNullOrEmpty(txtName.Text))
+            if(string.IsNullOrEmpty(emailTxtBoxSignUp.Text) || string.IsNullOrEmpty(passwordTxtBoxSignUp.Text) || string.IsNullOrEmpty(txtName.Text) || string.IsNullOrEmpty(txtSurname.Text) || string.IsNullOrEmpty(txtBoxPhoneNo.Text)
             {
                 MessageBox.Show("Please make sure all fields are filled out.");
                 return;
             }
 
-
-            // FINSIH THIS i.e add error codes
             if(validator.IsValidEmail(emailTxtBoxSignUp.Text) != 0)
             {
                 if(validator.IsValidEmail(emailTxtBoxSignUp.Text) == 1)
@@ -88,7 +88,64 @@ namespace Shoey
                     return;
                 }
                 
+                if(validator.IsValidName(txtName.Text) != 0)
+                {
+                    if (validator.IsValidName(txtName.Text) == 1)
+                    {
+                        MessageBox.Show("Cannot have Name empty");
+                        return;
+                    }
+                    if (validator.IsValidName(txtName.Text) == 2)
+                    {
+                        MessageBox.Show("Name is too long!");
+                        return;
+                    }
+                    if (validator.IsValidName(txtName.Text) == 3)
+                    {
+                        MessageBox.Show("Illegal characters in the name!");
+                        return;
+                    }
 
+                }
+
+                if (validator.IsValidName(txtSurname.Text) != 0)
+                {
+                    if (validator.IsValidName(txtSurname.Text) == 1)
+                    {
+                        MessageBox.Show("Cannot have Surname empty");
+                        return;
+                    }
+                    if (validator.IsValidName(txtSurname.Text) == 2)
+                    {
+                        MessageBox.Show("Surname is too long!");
+                        return;
+                    }
+                    if (validator.IsValidName(txtSurname.Text) == 3)
+                    {
+                        MessageBox.Show("Illegal characters in the surname!");
+                        return;
+                    }
+
+                }
+
+                if(validator.IsValidPhone(txtBoxPhoneNo.Text) != 0)
+                {
+                    if (validator.IsValidName(txtBoxPhoneNo.Text) == 1)
+                    {
+                        MessageBox.Show("Cannot have phoneNo Empty!");
+                        return;
+                    }
+                    if (validator.IsValidName(txtBoxPhoneNo.Text) == 2)
+                    {
+                        MessageBox.Show("Phone Number is too long!");
+                        return;
+                    }
+                    if (validator.IsValidName(txtBoxPhoneNo.Text) == 3)
+                    {
+                        MessageBox.Show("Illegal characters in the phone number!");
+                        return;
+                    }
+                }
             }
 
             if(validator.IsValidPassword(passwordTxtBoxSignUp.Text) != 0)
@@ -108,6 +165,7 @@ namespace Shoey
                     txtName.Text,
                     txtSurname.Text,
                     emailTxtBoxSignUp.Text,
+                    txtBoxPhoneNo.Text,
                     hashedPassword
                     );
 
